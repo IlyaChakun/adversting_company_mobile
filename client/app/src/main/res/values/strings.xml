@@ -1,0 +1,153 @@
+<resources>
+    <string name="app_name">Cars hub</string>
+    <string name="EXTRAS_ID">ID</string>
+    <string name="txt_default_name">Name</string>
+    <string name="txt_default_surname">Surname</string>
+    <string name="txt_default_fathername">Father\'s name</string>
+    <string name="txt_brand_name">Brand name</string>
+    <string name="btn_text_get_user">GET USER</string>
+    <string name="et_hint_enter_user_id">Enter user ID</string>
+    <string name="txt_def_error">Error</string>
+    <string name="et_hint_enter_your_name">Enter your name</string>
+    <string name="et_hint_enter_your_surname">Enter your surname</string>
+    <string name="et_hint_enter_your_fathername">Enter your father\'s name</string>
+    <string name="btn_text_add_user">Add User</string>
+    <string name="text_add_response_message">Add response message</string>
+    <string name="btn_text_save">Save</string>
+    <string name="btn_text_delete_user">Delete User</string>
+    <string name="text_file_select">Select File to upload</string>
+    <string name="btn_text_select_file">Select file</string>
+    <string name="txt_transmission_type">Коробка передач</string>
+    <string name="txt_wheel_drive_type">Привод</string>
+    <string name="txt_body_type">Тип кузова</string>
+    <string name="txt_engine_capacity">Объём двигателя</string>
+    <string name="txt_fuel_type">Двигатель</string>
+    <string name="txt_mileage">Пробег</string>
+    <string name="txt_release_year">Год выпуска</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_add_car">Add car</string>
+    <string name="action_settings">settings</string>
+    <string name="action_search">Search</string>
+
+
+
+    <!-- languages -->
+    <string-array name="language_list">
+        <item>English</item>
+        <item>Русский</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="developer_mode_on">prog mod on</string>
+    <string name="developer_mode_off">prog mod off</string>
+    <string name="button_save_car">Добавить объявление</string>
+    <string name="label_car_brand">Выберите марку автомобиля *</string>
+    <string name="label_car_model">Выберите модель *</string>
+    <string name="label_release_year">Выберите год выпуска *</string>
+    <string name="label_body_type">Выберите тип кузова *</string>
+    <string name="label_condition">Выберите состояние *</string>
+    <string name="label_price">Введите цену *</string>
+    <string name="label_engine_type">Выберите двигатель *</string>
+    <string name="label_description">Введите текст объявления</string>
+    <string name="labelAdditionalOptions">Выберите дополнительные опции</string>
+    <string name="labelInteriorMaterial">Выберите материал салона -</string>
+    <string name="labelInteriorColor">Выберите цвет салона -</string>
+    <string name="txt_condition">Cостояние</string>
+    <string name="labelSafeties">Выберите функции безопасности</string>
+    <string name="label_generation_spinner">Выберите поколение</string>
+    <string name="label_interior_material">Выберите материал салона *</string>
+    <string name="label_color">Выберите цвет *</string>
+    <string name="label_wheel_drive_type">Выберите тип привод *</string>
+    <string name="label_interior_color">Выберите цвет салона *</string>
+    <string name="label_mileage">Введите пробег*</string>
+    <string name="label_transmission">Выберите коробку передач *</string>
+    <string name="label_engine_capacity">Введите объём двигателя *</string>
+    <string name="label_select_image">Выберите фотографию</string>
+    <string name="label_interior">Выберите элементы интерьера</string>
+    <string name="txt_default_car_description">Описание отсутствует</string>
+    <string name="label_detail_interior_material">Материал салона</string>
+    <string name="label_detail_interior_color">Цвет салона</string>
+    <string name="label_detail_safeties">Функции безопасности</string>
+    <string name="label_detail_additional_options">Дополнительные опции</string>
+    <string name="label_car_detail_interior">Элементы интерьера</string>
+
+
+    <!-- -->
+
+    <string-array name="brand_ids">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <string-array name="sports_array">
+        <item>Shuttle Badminton</item>
+        <item>Tennis</item>
+        <item>Table Tennis</item>
+        <item>Basket Ball</item>
+        <item>Foot Ball</item>
+        <item>Volley Ball</item>
+        <item>Hockey</item>
+        <item>Swimming</item>
+
+        <item>Shuttle Badminton 2</item>
+        <item>Tennis 2</item>
+        <item>Table Tennis 2</item>
+        <item>Basket Ball 2</item>
+        <item>Foot Ball 2</item>
+        <item>Volley Ball 2</item>
+        <item>Hockey 2</item>
+        <item>Swimming 2</item>
+
+        <item>Shuttle Badminton 3</item>
+        <item>Tennis 3</item>
+        <item>Table Tennis 3</item>
+        <item>Basket Ball 3</item>
+        <item>Foot Ball 3</item>
+        <item>Volley Ball 3</item>
+        <item>Hockey 3</item>
+        <item>Swimming 3</item>
+
+        <item>Shuttle Badminton 4</item>
+        <item>Tennis 4</item>
+        <item>Table Tennis 4</item>
+        <item>Basket Ball 4</item>
+        <item>Foot Ball 4</item>
+        <item>Volley Ball 4</item>
+        <item>Hockey 4</item>
+        <item>Swimming 4</item>
+
+        <item>Shuttle Badminton 5</item>
+        <item>Tennis 5</item>
+        <item>Table Tennis 5</item>
+        <item>Basket Ball 5</item>
+        <item>Foot Ball 5</item>
+        <item>Volley Ball 5</item>
+        <item>Hockey 5</item>
+        <item>Swimming 5</item>
+    </string-array>
+</resources>

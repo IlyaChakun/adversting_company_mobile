@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="CarDetailBinding">
+
+        <variable
+            name="car"
+            type="by.chekun.repository.database.entity.car.view.CarDto" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            style="@style/layout_width_and_height_match">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/detailCarImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="191dp"
+                    android:contentDescription="car picture"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bmw_m3_e46" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtCarCardDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="@{car.brandTitleAndModelAndDescription}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:id="@+id/txtCarId"
+                        android:layout_width="61dp"
+                        android:layout_height="34dp"
+                        android:layout_weight="1"
+                        android:text="@{car.idString}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/txtCarUpdateDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="34dp"
+                        android:layout_weight="1"
+                        android:text="@{car.updatedDate}"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/txtPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="34dp"
+                        android:layout_weight="1"
+                        android:text="@{car.priceString}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="372dp"
+                    android:divider="@color/colorBlueAccent"
+                    android:showDividers="middle">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp">
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="149dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_release_year"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="135dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.releaseYear.releaseYearString}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp">
+
+                        <TextView
+                            android:id="@+id/tableLabelCondition"
+                            android:layout_width="149dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_condition"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tableValueCondition"
+                            android:layout_width="135dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.condition.value}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_mileage"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.mileage.mileageString}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_fuel_type"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.engineType.engineType}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_engine_capacity"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.engineCapacityString}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_body_type"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.bodyType.bodyType}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_wheel_drive_type"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.wheelDriveType.wheelDriveType}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/txt_transmission_type"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{car.transmissionType.transmissionType}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtUserDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="@{car.description}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/labelAdditionalOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:text="@string/label_detail_additional_options"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/labelInteriorMaterial"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="@string/label_detail_interior_material"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/interiorMaterial"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="@{car.interiorMaterial.interiorMaterial}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/labelInteriorColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="@string/label_detail_interior_color"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/interiorColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="@{car.interiorColor.interiorColor}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/labelSafeties"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/label_detail_safeties"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/safeties"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/labelInterior"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/label_car_detail_interior"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/interior"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+    </LinearLayout>
+</layout>

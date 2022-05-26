@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="by.chekun">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name="by.chekun.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="by.chekun.presentation.activities.splash.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoTittleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name="by.chekun.presentation.activities.detail.DetailActivity" />
+        <activity android:name="by.chekun.presentation.activities.main.MainActivity" />
+
+        <activity
+            android:name="by.chekun.presentation.activities.add.AddCarActivity"
+            android:label="@string/action_add_car"
+            android:parentActivityName="by.chekun.presentation.activities.main.MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="by.chekun.presentation.activities.main.MainActivity" />
+        </activity>
+
+        <activity
+            android:name="by.chekun.presentation.activities.settings.SettingsActivity"
+            android:label="@string/action_settings" />
+
+    </application>
+
+</manifest>
