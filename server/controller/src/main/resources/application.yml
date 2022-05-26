@@ -1,0 +1,41 @@
+
+##################### SPRING GLOBAL #################################
+spring:
+  ##################### DATA SOURCE #################################
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    ##################### MY SQL DATABASE #################################
+    url: jdbc:postgresql://localhost:5432/advertisement
+    username: postgres
+    password: 1111
+  ##################### JPA USED SPRING DATA #################################
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  ##################### SPRING MAIL PROPERTIES #################################
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: @gmail.com
+#    password:
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+
+
+####################### SECURITY ############################
+security-token-app:
+  auth:
+    accessTokenSecret: secretKey
+    accessTokenExpirationMsec: 30000000 #60000=one minute; remove one 0 and show tokes death
+
+    refreshTokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    refreshTokenExpirationMsec: 120000000 #one minute; remove one 0 and show tokes death
