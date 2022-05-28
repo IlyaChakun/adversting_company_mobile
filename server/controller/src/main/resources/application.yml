@@ -10,7 +10,7 @@ spring:
     #username: postgres
     #password: 1111
     username: postgres
-    password: admin
+    password: 1111
   ##################### JPA USED SPRING DATA #################################
   jpa:
     hibernate:

@@ -4,6 +4,7 @@ package by.iba;
 import by.iba.common.dto.PageWrapper;
 import by.iba.dto.AdvertisementReqParams;
 import by.iba.dto.req.advertisement.AdvertisementReq;
+import by.iba.dto.req.advertisement.AdvertisementUpdateReq;
 import by.iba.dto.resp.advertisement.AdvertisementResp;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,10 @@ public interface AdvertisementController {
 
     @PostMapping()
     ResponseEntity<AdvertisementResp> save(@RequestBody @Valid AdvertisementReq req,
+                                           final BindingResult bindingResult);
+
+    @PostMapping("/update-status")
+    ResponseEntity<AdvertisementResp> updateStatus(@RequestBody @Valid AdvertisementUpdateReq req,
                                            final BindingResult bindingResult);
 
     @GetMapping("/{id}")

@@ -3,9 +3,9 @@ package by.iba.service.impl;
 import by.iba.common.dto.PageWrapper;
 import by.iba.dto.AdvertisementReqParams;
 import by.iba.dto.req.advertisement.AdvertisementReq;
+import by.iba.dto.req.advertisement.AdvertisementUpdateReq;
 import by.iba.dto.resp.advertisement.AdvertisementResp;
 import by.iba.entity.user.Advertisement;
-import by.iba.entity.user.AdvertisementRating;
 import by.iba.entity.user.User;
 import by.iba.exception.ResourceNotFoundException;
 import by.iba.mapper.AdvertisementMapper;
@@ -16,15 +16,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Set;
 
-import static by.iba.specification.AdvertisementSpecification.findByAdvertisementTypeLike;
-import static by.iba.specification.AdvertisementSpecification.sortByAdvertisementRating;
+import static by.iba.specification.AdvertisementSpecification.findAllByAdvertisementType;
 
 @Service
 @AllArgsConstructor
@@ -33,6 +32,18 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     private final AdvertisementMapper advertisementMapper;
     private final AdvertisementRepository advertisementRepository;
     private final UserRepository userRepository;
+
+    @Override
+    public AdvertisementResp udpate(AdvertisementUpdateReq req) {
+        Advertisement advertisement = advertisementRepository.findById(req.getAdvertisementId())
+                .orElseThrow(ResourceNotFoundException::new);
+
+        advertisement.setStatus(req.getStatus());
+
+        Advertisement updated = advertisementRepository.save(advertisement);
+
+        return advertisementMapper.toDto(updated);
+    }
 
     @Override
     @Transactional
@@ -57,16 +68,27 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Override
     public PageWrapper<AdvertisementResp> findAll(Integer page, Integer size, AdvertisementReqParams advertisementReqParams) {
-
-        final Pageable pageable =
-                PageRequest.of(page, size);
-
-        Specification<Advertisement> specification =
-                getAdvertisementSpecification(advertisementReqParams.getAdvertisementTypes(), advertisementReqParams.getSortByRating());
+        Sort sort = null;
+        if (advertisementReqParams.getSortByRating()) {
+            sort = Sort.by("ratingSum").descending();
+        }
+        Pageable pageable;
+        if (sort != null) {
+            pageable = PageRequest.of(page, size, sort);
+        } else {
+            pageable = PageRequest.of(page, size);
+        }
 
         Page<Advertisement>
-                requests = advertisementRepository.findAll(pageable);
+                requests;
+        if (!advertisementReqParams.getAdvertisementTypes().isEmpty()) {
+            Specification<Advertisement> specification =
+                    getAdvertisementSpecification(advertisementReqParams.getAdvertisementTypes());
 
+            requests = advertisementRepository.findAll(specification, pageable);
+        } else {
+            requests = advertisementRepository.findAll(pageable);
+        }
 
         return
                 new PageWrapper<>(advertisementMapper
@@ -75,16 +97,12 @@ public class AdvertisementServiceImpl implements AdvertisementService {
                         requests.getTotalElements());
     }
 
-    private Specification<Advertisement> getAdvertisementSpecification(Set advertisementType,
-                                                                       Boolean ratings) {
+    private Specification<Advertisement> getAdvertisementSpecification(Set<String> advertisementTypes) {
 
         Specification<Advertisement> specification =
                 Specification
-                        .where(findByAdvertisementTypeLike(advertisementType));
+                        .where(findAllByAdvertisementType(advertisementTypes));
 
-        if (ratings) {
-            specification = specification.and(sortByAdvertisementRating(ratings));
-        }
         return specification;
     }
 }

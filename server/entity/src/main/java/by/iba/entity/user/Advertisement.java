@@ -25,8 +25,12 @@ public class Advertisement extends FullAbstractEntity {
     @Column(name = "picture")
     private String picture;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
     private AdvertisementType type;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private AdvertisementStatus status;
 
     @OneToMany(fetch = FetchType.EAGER)

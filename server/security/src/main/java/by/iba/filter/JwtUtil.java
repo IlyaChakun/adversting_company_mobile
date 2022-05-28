@@ -1,6 +1,7 @@
 package by.iba.filter;
 
 import by.iba.entity.user.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,8 @@ import javax.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -44,11 +47,21 @@ public class JwtUtil {
     }
 
     public AccessToken generateToken(User user){
+        String rolePrefix = "ROLE_";
+        Claims claims = Jwts.claims()
+                .setSubject(user.getEmail());
+        List<String> roles = user.getRoles().stream()
+                .map(x -> rolePrefix + x.getName())
+                .collect(Collectors.toList());
+        claims.put("roles", roles);
+        claims.put("email", user.getEmail());
+        claims.put("id", user.getId());
 
         Date currentDate = new Date();
         Date expiration = new Date(currentDate.getTime() + expirationSeconds);
 
         String accessToken = Jwts.builder()
+                .setClaims(claims)
                 .setSubject(user.getEmail())
                 .setIssuedAt(currentDate)
                 .setExpiration(expiration)

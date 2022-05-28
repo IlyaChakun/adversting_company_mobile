@@ -6,6 +6,7 @@ import by.iba.common.controller.ControllerHelper;
 import by.iba.common.dto.PageWrapper;
 import by.iba.dto.AdvertisementReqParams;
 import by.iba.dto.req.advertisement.AdvertisementReq;
+import by.iba.dto.req.advertisement.AdvertisementUpdateReq;
 import by.iba.dto.resp.advertisement.AdvertisementResp;
 import by.iba.service.AdvertisementService;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,16 @@ public class AdvertisementControllerImpl implements AdvertisementController {
         return ResponseEntity
                 .created(location)
                 .body(saved);
+    }
+
+    @Override
+    public ResponseEntity<AdvertisementResp> updateStatus(AdvertisementUpdateReq req, BindingResult bindingResult) {
+        ControllerHelper.checkBindingResultAndThrowExceptionIfInvalid(bindingResult);
+
+        final AdvertisementResp saved = advertisementService.udpate(req);
+
+        return ResponseEntity
+                .ok(saved);
     }
 
     @Override

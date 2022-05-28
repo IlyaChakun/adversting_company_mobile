@@ -12,6 +12,6 @@ import java.util.Set;
 public class AdvertisementReqParams {
 
     private Boolean sortByRating = false;
-    private Set<AdvertisementType> advertisementTypes = new HashSet<>();
+    private Set<String> advertisementTypes = new HashSet<>();
 
 }
