@@ -19,8 +19,8 @@ import android.widget.*
 import by.chekun.R
 import by.chekun.di.component.ViewModelComponent
 import by.chekun.domain.AddCarViewModel
-import by.chekun.multispinner.MultiSpinnerSearch
-import by.chekun.multispinner.SingleSpinner
+//import by.chekun.multispinner.MultiSpinnerSearch
+//import by.chekun.multispinner.SingleSpinner
 import by.chekun.presentation.activities.main.MainActivity
 import by.chekun.presentation.base.BaseActivity
 import by.chekun.repository.database.entity.brand.ReleaseYearDto
@@ -217,6 +217,7 @@ class AddCarActivity : BaseActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
@@ -256,18 +257,18 @@ class AddCarActivity : BaseActivity() {
         val bodyTypeSpinner: Spinner = findViewById(R.id.body_type_spinner)
 
 
-        val conditionSpinner: SingleSpinner = findViewById(R.id.condition_spinner)
-
-        val engineSpinner: SingleSpinner = findViewById(R.id.engine_spinner)
-
-        val transmissionSpinner: SingleSpinner = findViewById(R.id.transmission_type_spinner)
-        val wheelDriveTypeSpinner: SingleSpinner = findViewById(R.id.wheel_drive_spinner)
-        val colorSpinner: SingleSpinner = findViewById(R.id.color_spinner)
-        val interiorColorSpinner: SingleSpinner = findViewById(R.id.interior_color_spinner)
-        val interiorMaterialSpinner: SingleSpinner = findViewById(R.id.interior_material_spinner)
-
-        val safetiesMultipleSpinner: MultiSpinnerSearch = findViewById(R.id.safeties_spinner)
-        val interiorMultipleSpinner: MultiSpinnerSearch = findViewById(R.id.interior_spinner)
+//        val conditionSpinner: SingleSpinner = findViewById(R.id.condition_spinner)
+//
+//        val engineSpinner: SingleSpinner = findViewById(R.id.engine_spinner)
+//
+//        val transmissionSpinner: SingleSpinner = findViewById(R.id.transmission_type_spinner)
+//        val wheelDriveTypeSpinner: SingleSpinner = findViewById(R.id.wheel_drive_spinner)
+//        val colorSpinner: SingleSpinner = findViewById(R.id.color_spinner)
+//        val interiorColorSpinner: SingleSpinner = findViewById(R.id.interior_color_spinner)
+//        val interiorMaterialSpinner: SingleSpinner = findViewById(R.id.interior_material_spinner)
+//
+//        val safetiesMultipleSpinner: MultiSpinnerSearch = findViewById(R.id.safeties_spinner)
+//        val interiorMultipleSpinner: MultiSpinnerSearch = findViewById(R.id.interior_spinner)
 
         addActivitySpinners[BRAND_SPINNER_KEY] = brandSpinner
         addActivitySpinners[MODEL_SPINNER_KEY] = modelSpinner
@@ -275,19 +276,19 @@ class AddCarActivity : BaseActivity() {
         addActivitySpinners[BODY_TYPE_SPINNER_KEY] = bodyTypeSpinner
         addActivitySpinners[GENERATION_SPINNER_KEY] = generationSpinner
 
-        addActivitySpinners[CONDITION_SPINNER_KEY] = conditionSpinner
-
-        addActivitySpinners[ENGINE_TYPE_SPINNER_KEY] = engineSpinner
-
-        addActivitySpinners[TRANSMISSION_TYPE_SPINNER_KEY] = transmissionSpinner
-        addActivitySpinners[WHEEL_DRIVE_TYPE_SPINNER_KEY] = wheelDriveTypeSpinner
-        addActivitySpinners[COLOR_TYPE_SPINNER_KEY] = colorSpinner
-        addActivitySpinners[INTERIOR_COLOR_TYPE_SPINNER_KEY] = interiorColorSpinner
-        addActivitySpinners[INTERIOR_MATERIAL_TYPE_SPINNER_KEY] = interiorMaterialSpinner
-
-
-        addActivitySpinners[INTERIOR_MULTIPLE_SPINNER_KEY] = interiorMultipleSpinner
-        addActivitySpinners[SAFETIES_MULTIPLE_SPINNER_KEY] = safetiesMultipleSpinner
+//        addActivitySpinners[CONDITION_SPINNER_KEY] = conditionSpinner
+//
+//        addActivitySpinners[ENGINE_TYPE_SPINNER_KEY] = engineSpinner
+//
+//        addActivitySpinners[TRANSMISSION_TYPE_SPINNER_KEY] = transmissionSpinner
+//        addActivitySpinners[WHEEL_DRIVE_TYPE_SPINNER_KEY] = wheelDriveTypeSpinner
+//        addActivitySpinners[COLOR_TYPE_SPINNER_KEY] = colorSpinner
+//        addActivitySpinners[INTERIOR_COLOR_TYPE_SPINNER_KEY] = interiorColorSpinner
+//        addActivitySpinners[INTERIOR_MATERIAL_TYPE_SPINNER_KEY] = interiorMaterialSpinner
+//
+//
+//        addActivitySpinners[INTERIOR_MULTIPLE_SPINNER_KEY] = interiorMultipleSpinner
+//        addActivitySpinners[SAFETIES_MULTIPLE_SPINNER_KEY] = safetiesMultipleSpinner
 
 
     }
@@ -309,9 +310,9 @@ class AddCarActivity : BaseActivity() {
             val interiorColorId: Long = addActivitySpinners[INTERIOR_COLOR_TYPE_SPINNER_KEY]!!.selectedItemId
             val interiorMaterialId: Long = addActivitySpinners[INTERIOR_MATERIAL_TYPE_SPINNER_KEY]!!.selectedItemId
             val releaseYear: Int = (addActivitySpinners[RELEASE_YEAR_SPINNER_KEY]!!.selectedItem as ReleaseYearDto).releaseYear
-
-            val safetyIds = (addActivitySpinners[SAFETIES_MULTIPLE_SPINNER_KEY] as MultiSpinnerSearch).selectedIds
-            val interiorIds = (addActivitySpinners[INTERIOR_MULTIPLE_SPINNER_KEY] as MultiSpinnerSearch).selectedIds
+//
+//            val safetyIds = (addActivitySpinners[SAFETIES_MULTIPLE_SPINNER_KEY] as MultiSpinnerSearch).selectedIds
+//            val interiorIds = (addActivitySpinners[INTERIOR_MULTIPLE_SPINNER_KEY] as MultiSpinnerSearch).selectedIds
 
             val priceEditText = findViewById<EditText>(R.id.txt_price_value)
             val price: Double = priceEditText.text.toString().toDouble()
@@ -337,8 +338,8 @@ class AddCarActivity : BaseActivity() {
             carRequestDto.releaseYear = releaseYear
             carRequestDto.price = price
             carRequestDto.mileage = mileage
-            carRequestDto.safetyIds = safetyIds
-            carRequestDto.interiorIds = interiorIds
+//            carRequestDto.safetyIds = safetyIds
+//            carRequestDto.interiorIds = interiorIds
             val descriptionEditText = findViewById<EditText>(R.id.txt_description_value)
             carRequestDto.description = descriptionEditText.text.toString()
 
