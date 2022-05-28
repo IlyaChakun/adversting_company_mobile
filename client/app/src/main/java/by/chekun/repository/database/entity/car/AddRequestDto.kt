@@ -1,25 +1,22 @@
 package by.chekun.repository.database.entity.car
 
+import by.chekun.repository.database.entity.car.view.AdvertisementStatus
+import by.chekun.repository.database.entity.car.view.AdvertisementType
 import com.google.gson.annotations.SerializedName
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 
-class CarRequestDto {
+class AddRequestDto {
 
-    var brandId: Long = 0
+    private val title: String? = null
 
-    var modelId: Long = 0
+    private val body: String? = null
+    
+    private val type: AdvertisementType? = null
 
-    var releaseYear: Int = 0
+    private val status: AdvertisementStatus? = null
 
-    var generationId: Long = 0
-
-    var bodyTypeId: Long = 0
-
-    var colorId: Long = 0
-
-    var conditionId: Long = 0
+    private val userId: Long? = null
 
     @SerializedName("mileage")
     lateinit var mileage: MileageDto

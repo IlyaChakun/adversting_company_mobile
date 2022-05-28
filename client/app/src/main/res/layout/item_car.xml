@@ -6,7 +6,7 @@
 
         <variable
             name="car"
-            type="by.chekun.repository.database.entity.car.view.CarDto" />
+            type="by.chekun.repository.database.entity.car.view.AdvertisementResp" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:layout_weight="1"
-                android:text="@{car.brandTitleAndModelAndDescription}"
+                android:text="@{car.title}"
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
 
@@ -47,17 +47,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:layout_weight="1"
-                android:text="@{car.releaseYearAndDimensionAndEngineCapacityAndEngineTypeAnd}"
+                android:text="@{car.body}"
                 android:textSize="16sp"
                 android:textColor="@color/colorBlack"/>
 
-
+<!--need getter of field to use variable.field-->
             <TextView
                 android:id="@+id/txtPrice"
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:layout_weight="1"
-                android:text="@{car.priceString}"
+                android:text="@{car.type}"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+  <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@{car.status}"
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
 

@@ -2,12 +2,12 @@ package by.chekun.repository.server
 
 import android.util.Log
 import by.chekun.repository.database.entity.brand.BrandResponse
-import by.chekun.repository.database.entity.car.CarRequestDto
-import by.chekun.repository.database.entity.car.CarResponse
+import by.chekun.repository.database.entity.car.AddRequestDto
+import by.chekun.repository.database.entity.car.AddResponse
 import by.chekun.repository.database.entity.car.chassis.ChassisComponent
 import by.chekun.repository.database.entity.car.equipment.EquipmentComponent
 import by.chekun.repository.database.entity.car.interior.InteriorComponent
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 import io.reactivex.ObservableTransformer
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
@@ -27,18 +27,18 @@ class ServerCommunicator(private val mService: ApiService) {
         private const val DEFAULT_RETRY_ATTEMPTS = 4L
     }
 
-    fun getAllCars(): Single<Response<CarResponse>> {
+    fun getAllCars(): Single<Response<AddResponse>> {
         return mService.getCars()
                 .compose(singleTransformer())
                 .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
     }
 
-    fun getCar(id: Long): Single<CarDto> {
+    fun getCar(id: Long): Single<AdvertisementResp> {
         return mService.getCarById(id).compose(singleTransformer())
     }
 
-    fun saveCar(car: CarRequestDto): Call<CarDto> {
-        return mService.saveCar(car)
+    fun saveCar(add: AddRequestDto): Call<AdvertisementResp> {
+        return mService.saveCar(add)
     }
 
 
@@ -64,7 +64,7 @@ class ServerCommunicator(private val mService: ApiService) {
 
     }
 
-    fun postImage(carId: Long, picture: MultipartBody.Part): Call<CarDto> {
+    fun postImage(carId: Long, picture: MultipartBody.Part): Call<AdvertisementResp> {
         return mService.postImage(carId, picture)
     }
 

@@ -1,9 +1,9 @@
 package by.chekun.repository.database.entity.car
 
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 import com.google.gson.annotations.SerializedName
 
-data class CarResponse(
+data class AddResponse(
         @SerializedName("objects")
-        val cars: List<CarDto>
+        val adds: List<AdvertisementResp>
 )

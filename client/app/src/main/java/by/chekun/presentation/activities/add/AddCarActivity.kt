@@ -24,9 +24,9 @@ import by.chekun.domain.AddCarViewModel
 import by.chekun.presentation.activities.main.MainActivity
 import by.chekun.presentation.base.BaseActivity
 import by.chekun.repository.database.entity.brand.ReleaseYearDto
-import by.chekun.repository.database.entity.car.CarRequestDto
+import by.chekun.repository.database.entity.car.AddRequestDto
 import by.chekun.repository.database.entity.car.MileageDto
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 import by.chekun.utils.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -321,23 +321,23 @@ class AddCarActivity : BaseActivity() {
             val mileageDistance: Int = mileageEditText.text.toString().toInt()
             val mileage = MileageDto()
             mileage.mileage = mileageDistance
-            val carRequestDto = CarRequestDto()
-            carRequestDto.brandId = brandId
-            carRequestDto.modelId = modelId
-            carRequestDto.generationId = generationId
-            carRequestDto.bodyTypeId = bodyTypeId
-            carRequestDto.transmissionTypeId = transmissionTypeId
-            carRequestDto.engineTypeId = engineTypeId
-            val engineCapacityEditText = findViewById<EditText>(R.id.txt_engine_capacity)
-            carRequestDto.engineCapacity = engineCapacityEditText.text.toString().toDouble()
-            carRequestDto.wheelDriveTypeId = wheelDriveTypeId
-            carRequestDto.colorId = colorId
-            carRequestDto.conditionId = conditionId
-            carRequestDto.interiorColorId = interiorColorId
-            carRequestDto.interiorMaterialId = interiorMaterialId
-            carRequestDto.releaseYear = releaseYear
-            carRequestDto.price = price
-            carRequestDto.mileage = mileage
+            val carRequestDto = AddRequestDto()
+//            carRequestDto.brandId = brandId
+//            carRequestDto.modelId = modelId
+//            carRequestDto.generationId = generationId
+//            carRequestDto.bodyTypeId = bodyTypeId
+//            carRequestDto.transmissionTypeId = transmissionTypeId
+//            carRequestDto.engineTypeId = engineTypeId
+//            val engineCapacityEditText = findViewById<EditText>(R.id.txt_engine_capacity)
+//            carRequestDto.engineCapacity = engineCapacityEditText.text.toString().toDouble()
+//            carRequestDto.wheelDriveTypeId = wheelDriveTypeId
+//            carRequestDto.colorId = colorId
+//            carRequestDto.conditionId = conditionId
+//            carRequestDto.interiorColorId = interiorColorId
+//            carRequestDto.interiorMaterialId = interiorMaterialId
+//            carRequestDto.releaseYear = releaseYear
+//            carRequestDto.price = price
+//            carRequestDto.mileage = mileage
 //            carRequestDto.safetyIds = safetyIds
 //            carRequestDto.interiorIds = interiorIds
             val descriptionEditText = findViewById<EditText>(R.id.txt_description_value)
@@ -360,9 +360,9 @@ class AddCarActivity : BaseActivity() {
             val multipartBody: MultipartBody.Part = MultipartBody.Part.createFormData("picture", file.name, requestBody)
 
 
-            viewModel?.saveCar(carRequestDto)?.enqueue(object : Callback<CarDto> {
+            viewModel?.saveCar(carRequestDto)?.enqueue(object : Callback<AdvertisementResp> {
 
-                override fun onResponse(call: Call<CarDto>?, response: Response<CarDto>) {
+                override fun onResponse(call: Call<AdvertisementResp>?, response: Response<AdvertisementResp>) {
 
                     Toast.makeText(applicationContext, response.code().toString() + " ", Toast.LENGTH_SHORT).show()
 
@@ -373,15 +373,15 @@ class AddCarActivity : BaseActivity() {
                         showToast("CarDto added, new id = " + carId)
 
                       //  showMainActivity()
-                        val req: Call<CarDto>? = viewModel?.postImage(carId!!, multipartBody)
-                        req?.enqueue(object : Callback<CarDto?> {
-                            override fun onResponse(call: Call<CarDto?>, response: Response<CarDto?>) {
+                        val req: Call<AdvertisementResp>? = viewModel?.postImage(carId!!, multipartBody)
+                        req?.enqueue(object : Callback<AdvertisementResp?> {
+                            override fun onResponse(call: Call<AdvertisementResp?>, response: Response<AdvertisementResp?>) {
                                 Toast.makeText(applicationContext, response.code().toString() + " ", Toast.LENGTH_SHORT).show()
 
                                 showMainActivity()
                             }
 
-                            override fun onFailure(call: Call<CarDto?>, t: Throwable) {
+                            override fun onFailure(call: Call<AdvertisementResp?>, t: Throwable) {
                                 Toast.makeText(applicationContext, "Request failed", Toast.LENGTH_SHORT).show()
 
                             }
@@ -393,7 +393,7 @@ class AddCarActivity : BaseActivity() {
 
                 }
 
-                override fun onFailure(call: Call<CarDto>?, t: Throwable?) {
+                override fun onFailure(call: Call<AdvertisementResp>?, t: Throwable?) {
                     Toast.makeText(applicationContext, "Request failed", Toast.LENGTH_SHORT).show()
                     t?.printStackTrace()
                 }

@@ -6,7 +6,7 @@
 
         <variable
             name="car"
-            type="by.chekun.repository.database.entity.car.view.CarDto" />
+            type="by.chekun.repository.database.entity.car.view.AdvertisementResp" />
     </data>
 
     <LinearLayout
@@ -42,7 +42,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="42dp"
                         android:layout_weight="1"
-                        android:text="@{car.brandTitleAndModelAndDescription}"
+                        android:text="@{car.title}"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         tools:ignore="NestedWeights" />
@@ -52,7 +52,7 @@
                         android:layout_width="61dp"
                         android:layout_height="34dp"
                         android:layout_weight="1"
-                        android:text="@{car.idString}"
+                        android:text="@{car.body}"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp" />
 
@@ -61,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
                         android:layout_weight="1"
-                        android:text="@{car.updatedDate}"
+                        android:text="@{car.type}"
                         android:textSize="15sp" />
 
 
@@ -70,7 +70,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
                         android:layout_weight="1"
-                        android:text="@{car.priceString}"
+                        android:text="@{car.status}"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 
@@ -105,7 +105,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.releaseYear.releaseYearString}"
+                            android:text="Release year"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
                     </TableRow>
@@ -134,7 +134,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.condition.value}"
+                            android:text="condition"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
                     </TableRow>
@@ -162,7 +162,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.mileage.mileageString}"
+                            android:text="mileage"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
                     </TableRow>
@@ -190,7 +190,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.engineType.engineType}"
+                            android:text="engineType"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
@@ -219,7 +219,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.engineCapacityString}"
+                            android:text="engineCapacity"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
                     </TableRow>
@@ -247,7 +247,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.bodyType.bodyType}"
+                            android:text="bodyTpe"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
@@ -276,7 +276,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.wheelDriveType.wheelDriveType}"
+                            android:text="Wheel"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
                     </TableRow>
@@ -304,7 +304,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
-                            android:text="@{car.transmissionType.transmissionType}"
+                            android:text="transmission"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
@@ -321,7 +321,7 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:text="@{car.description}"
+                        android:text="descr"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 
@@ -356,7 +356,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="42dp"
                         android:layout_weight="1"
-                        android:text="@{car.interiorMaterial.interiorMaterial}"
+                        android:text="inMateral"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 
@@ -381,7 +381,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="42dp"
                         android:layout_weight="1"
-                        android:text="@{car.interiorColor.interiorColor}"
+                        android:text="inColor"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 

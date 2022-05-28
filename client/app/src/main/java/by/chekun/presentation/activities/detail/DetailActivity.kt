@@ -22,7 +22,7 @@ import by.chekun.databinding.CarDetailBinding
 import by.chekun.di.component.ViewModelComponent
 import by.chekun.domain.SingleCarViewModel
 import by.chekun.presentation.base.BaseActivity
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 import java.util.*
 import javax.inject.Inject
 
@@ -51,83 +51,83 @@ class DetailActivity : BaseActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun initDataBinding(car: CarDto) {
+    private fun initDataBinding(car: AdvertisementResp) {
         binding.car = car
-        initActionBar("${car.model} ${car.generation}")
+     //   initActionBar("${car.model} ${car.generation}")
         initOrderedList(car)
         initCarImage(car)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun initCarImage(car: CarDto) {
-        if (car.picture != null) {
-            val base64String = car.picture
-            // Receiving side
-
-            // Receiving side
-            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
-            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-            val image: ImageView = findViewById<View>(R.id.detailCarImage) as ImageView
-
-            image.setImageBitmap(Bitmap.createScaledBitmap(bmp, image.width,
-                    image.height, false))
-        }
+    private fun initCarImage(car: AdvertisementResp) {
+//        if (car.picture != null) {
+//            val base64String = car.picture
+//            // Receiving side
+//
+//            // Receiving side
+//            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
+//            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+//            val image: ImageView = findViewById<View>(R.id.detailCarImage) as ImageView
+//
+//            image.setImageBitmap(Bitmap.createScaledBitmap(bmp, image.width,
+//                    image.height, false))
+//        }
     }
 
-    private fun initOrderedList(car: CarDto) {
+    private fun initOrderedList(car: AdvertisementResp) {
         val safetiesLabel: TextView = findViewById(R.id.labelSafeties)
         val safeties: TextView = findViewById(R.id.safeties)
 
         val interiorLabel: TextView = findViewById(R.id.labelInterior)
         val interior: TextView = findViewById(R.id.interior)
 
-        if (car.safeties.isEmpty()) {
-            safetiesLabel.visibility = View.INVISIBLE;
-            safeties.visibility = View.INVISIBLE;
-        } else {
-            val content = SpannableStringBuilder()
-            var number = 1
-            for (safetyDto in car.safeties) {
-                val contentStart: Int = content.length
-                val leadingString = "$number."
-                content.append(leadingString)
-                content.append(safetyDto.safety)
-                content.append("\n")
-                val contentEnd: Int = content.length
-                content.setSpan(
-                        LeadingMarginSpan.Standard(0, 66),
-                        contentStart,
-                        contentEnd,
-                        Spannable.SPAN_INCLUSIVE_EXCLUSIVE
-                )
-                number++
-            }
-            safeties.text = content.toString()
-        }
-
-        if (car.interior.isEmpty()) {
-            interiorLabel.visibility = View.INVISIBLE;
-            interior.visibility = View.INVISIBLE;
-        } else {
-            val content = SpannableStringBuilder()
-            var number = 1
-            for (interiorDto in car.interior) {
-                val contentStart: Int = content.length
-                val leadingString = "$number."
-                content.append(leadingString)
-                content.append(interiorDto.interior)
-                content.append("\n")
-                val contentEnd: Int = content.length
-                content.setSpan(
-                        LeadingMarginSpan.Standard(0, 66),
-                        contentStart,
-                        contentEnd,
-                        Spannable.SPAN_INCLUSIVE_EXCLUSIVE
-                )
-                number++
-            }
-            interior.text = content.toString()
-        }
+//        if (car.safeties.isEmpty()) {
+//            safetiesLabel.visibility = View.INVISIBLE;
+//            safeties.visibility = View.INVISIBLE;
+//        } else {
+//            val content = SpannableStringBuilder()
+//            var number = 1
+//            for (safetyDto in car.safeties) {
+//                val contentStart: Int = content.length
+//                val leadingString = "$number."
+//                content.append(leadingString)
+//                content.append(safetyDto.safety)
+//                content.append("\n")
+//                val contentEnd: Int = content.length
+//                content.setSpan(
+//                        LeadingMarginSpan.Standard(0, 66),
+//                        contentStart,
+//                        contentEnd,
+//                        Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+//                )
+//                number++
+//            }
+//            safeties.text = content.toString()
+//        }
+//
+//        if (car.interior.isEmpty()) {
+//            interiorLabel.visibility = View.INVISIBLE;
+//            interior.visibility = View.INVISIBLE;
+//        } else {
+//            val content = SpannableStringBuilder()
+//            var number = 1
+//            for (interiorDto in car.interior) {
+//                val contentStart: Int = content.length
+//                val leadingString = "$number."
+//                content.append(leadingString)
+//                content.append(interiorDto.interior)
+//                content.append("\n")
+//                val contentEnd: Int = content.length
+//                content.setSpan(
+//                        LeadingMarginSpan.Standard(0, 66),
+//                        contentStart,
+//                        contentEnd,
+//                        Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+//                )
+//                number++
+//            }
+//            interior.text = content.toString()
+//        }
     }
 
     companion object {

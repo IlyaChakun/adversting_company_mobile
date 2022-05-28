@@ -1,16 +1,14 @@
 package by.chekun.repository.server
 
 import by.chekun.repository.database.entity.brand.BrandResponse
-import by.chekun.repository.database.entity.car.CarRequestDto
-import by.chekun.repository.database.entity.car.CarResponse
+import by.chekun.repository.database.entity.car.AddRequestDto
+import by.chekun.repository.database.entity.car.AddResponse
 import by.chekun.repository.database.entity.car.chassis.ChassisComponent
 import by.chekun.repository.database.entity.car.equipment.EquipmentComponent
 import by.chekun.repository.database.entity.car.interior.InteriorComponent
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 import io.reactivex.Single
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -20,14 +18,14 @@ interface ApiService {
     //    @GET("/cars")
 //    fun getCars(): Single<Response<Array<CarDto>>>
     @GET("/cars")
-    fun getCars(): Single<Response<CarResponse>>
+    fun getCars(): Single<Response<AddResponse>>
 
     @GET("/cars/{id}")
-    fun getCarById(@Path("id") id: Long): Single<CarDto>
+    fun getCarById(@Path("id") id: Long): Single<AdvertisementResp>
 
 
     @POST("/cars")
-    fun saveCar(@Body carRequest: CarRequestDto): Call<CarDto>
+    fun saveCar(@Body addRequest: AddRequestDto): Call<AdvertisementResp>
 
 //    @Multipart
 //    @POST("/cars/picture")
@@ -38,7 +36,7 @@ interface ApiService {
     fun postImage(@Path("id") id: Long ,
                   @Part picture: MultipartBody.Part
     )
-            : Call<CarDto>
+            : Call<AdvertisementResp>
 
 //    @Multipart
 //    @POST("/cars")

@@ -5,13 +5,13 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import by.chekun.R
 import by.chekun.databinding.CarItemBinding
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 
 class CarViewHolder(private val binding: CarItemBinding)
     : RecyclerView.ViewHolder(binding.root) {
 
-    private var car: CarDto? = null
-    private var listener: CarItemClickListener<CarDto>? = null
+    private var car: AdvertisementResp? = null
+    private var listener: CarItemClickListener<AdvertisementResp>? = null
     private val itemDetail = View.OnClickListener { listener!!.openDetail(this.car!!) }
 
     var carItemImage: ImageView? = null
@@ -21,7 +21,7 @@ class CarViewHolder(private val binding: CarItemBinding)
     }
 
 
-    fun bind(car: CarDto, listener: CarItemClickListener<CarDto>) {
+    fun bind(car: AdvertisementResp, listener: CarItemClickListener<AdvertisementResp>) {
         this.car = car
         this.listener = listener
         this.setupItem()

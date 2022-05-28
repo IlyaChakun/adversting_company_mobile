@@ -3,12 +3,12 @@ package by.chekun.domain
 import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.LiveData
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 import by.chekun.presentation.widget.SingleLiveEvent
 import by.chekun.repository.AppRepository
 
 class AllCarsViewModel(application: Application, private val mRepository: AppRepository) : BaseViewModel(application) {
-    private val liveDataItems = SingleLiveEvent<List<CarDto>>()
+    private val liveDataItems = SingleLiveEvent<List<AdvertisementResp>>()
 
     @SuppressLint("CheckResult")
     fun getAllItems() {
@@ -31,7 +31,7 @@ class AllCarsViewModel(application: Application, private val mRepository: AppRep
 //        liveDataItems.value = listOf(car)
     }
 
-    fun getLiveDataItems(): LiveData<List<CarDto>> {
+    fun getLiveDataItems(): LiveData<List<AdvertisementResp>> {
         return liveDataItems
     }
 }

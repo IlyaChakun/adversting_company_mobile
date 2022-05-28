@@ -11,17 +11,17 @@ import by.chekun.databinding.CarItemBinding
 import by.chekun.presentation.base.BaseAdapter
 import by.chekun.presentation.item.CarItemClickListener
 import by.chekun.presentation.item.CarViewHolder
-import by.chekun.repository.database.entity.car.view.CarDto
+import by.chekun.repository.database.entity.car.view.AdvertisementResp
 import com.squareup.picasso.Picasso
 import java.util.*
 
 
 class CarAdapter(
-        private val context: Context,
-        private val cars: List<CarDto>,
-        private val listener: CarItemClickListener<CarDto>) :
-        BaseAdapter<CarViewHolder, CarDto,
-                CarItemClickListener<CarDto>>(cars as MutableList<CarDto>, listener) {
+    private val context: Context,
+    private val cars: List<AdvertisementResp>,
+    private val listener: CarItemClickListener<AdvertisementResp>) :
+        BaseAdapter<CarViewHolder, AdvertisementResp,
+                CarItemClickListener<AdvertisementResp>>(cars as MutableList<AdvertisementResp>, listener) {
 
 
     override fun getItemCount(): Int {
@@ -40,15 +40,15 @@ class CarAdapter(
         holder.bind(cars[position], listener)
 
         val car = cars[position]
-        if (car.picture != null) {
-            val base64String = car.picture
-            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
-            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-
-            holder.carItemImage?.setImageBitmap(bmp)
-        } else {
-            Picasso.get().load("https://sl2.d.umn.edu/och/PhotoGallery/no-image-available.jpg").into(holder.carItemImage)
-        }
+//        if (car.picture != null) {
+//            val base64String = car.picture
+//            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
+//            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+//
+//            holder.carItemImage?.setImageBitmap(bmp)
+//        } else {
+//            Picasso.get().load("https://sl2.d.umn.edu/och/PhotoGallery/no-image-available.jpg").into(holder.carItemImage)
+//        }
     }
 
 
