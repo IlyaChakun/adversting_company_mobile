@@ -44,18 +44,12 @@ public class JwtUtil {
     }
 
     public AccessToken generateToken(User user){
-/*        String rolePrefix = "ROLE_";
-        Claims claims = Jwts.claims()
-                .setSubject(user.getLogin());
-        claims.put("roles", rolePrefix + user.getRoles());
-        claims.put("id", user.getId());*/
 
         Date currentDate = new Date();
         Date expiration = new Date(currentDate.getTime() + expirationSeconds);
 
         String accessToken = Jwts.builder()
-                //.setClaims(claims)
-                .setSubject(user.getLogin())
+                .setSubject(user.getEmail())
                 .setIssuedAt(currentDate)
                 .setExpiration(expiration)
                 .signWith(SignatureAlgorithm.HS512, secretKey)

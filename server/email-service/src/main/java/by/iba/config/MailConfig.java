@@ -20,7 +20,7 @@ import java.util.Properties;
 @NoArgsConstructor
 @Component
 public class MailConfig {
-
+/*
     @Value("${spring.mail.username}")
     private String userEmail;
 
@@ -43,5 +43,5 @@ public class MailConfig {
         props.put("mail.debug", "true");
 
         return mailSender;
-    }
+    }*/
 }

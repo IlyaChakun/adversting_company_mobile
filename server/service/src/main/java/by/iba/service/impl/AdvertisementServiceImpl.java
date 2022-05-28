@@ -5,6 +5,7 @@ import by.iba.dto.AdvertisementReqParams;
 import by.iba.dto.req.advertisement.AdvertisementReq;
 import by.iba.dto.resp.advertisement.AdvertisementResp;
 import by.iba.entity.user.Advertisement;
+import by.iba.entity.user.AdvertisementRating;
 import by.iba.entity.user.User;
 import by.iba.exception.ResourceNotFoundException;
 import by.iba.mapper.AdvertisementMapper;
@@ -15,9 +16,15 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Set;
+
+import static by.iba.specification.AdvertisementSpecification.findByAdvertisementTypeLike;
+import static by.iba.specification.AdvertisementSpecification.sortByAdvertisementRating;
 
 @Service
 @AllArgsConstructor
@@ -54,6 +61,9 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         final Pageable pageable =
                 PageRequest.of(page, size);
 
+        Specification<Advertisement> specification =
+                getAdvertisementSpecification(advertisementReqParams.getAdvertisementTypes(), advertisementReqParams.getSortByRating());
+
         Page<Advertisement>
                 requests = advertisementRepository.findAll(pageable);
 
@@ -63,5 +73,18 @@ public class AdvertisementServiceImpl implements AdvertisementService {
                         .toDtoList(requests.toList()),
                         requests.getTotalPages(),
                         requests.getTotalElements());
+    }
+
+    private Specification<Advertisement> getAdvertisementSpecification(Set advertisementType,
+                                                                       Boolean ratings) {
+
+        Specification<Advertisement> specification =
+                Specification
+                        .where(findByAdvertisementTypeLike(advertisementType));
+
+        if (ratings) {
+            specification = specification.and(sortByAdvertisementRating(ratings));
+        }
+        return specification;
     }
 }

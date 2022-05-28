@@ -4,6 +4,7 @@ public enum AdvertisementStatus {
 
     DENIED,
     PUBLISHED,
-    DRAFT
+    DRAFT,
+    PENDING
 
 }

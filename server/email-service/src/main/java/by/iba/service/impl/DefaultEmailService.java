@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class DefaultEmailService implements EmailService {
+public class DefaultEmailService /*implements EmailService*/ {
 
-    private final JavaMailSender emailSender;
+    /*private final JavaMailSender emailSender;
 
     @Async
     @Override
@@ -31,6 +31,6 @@ public class DefaultEmailService implements EmailService {
             throw new EmailServiceException("This email does not exist", e);
         }
 
-    }
+    }*/
 
 }
