@@ -57,7 +57,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <Spinner
                         android:id="@+id/brand_spinner"
@@ -84,7 +84,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <Spinner
 
@@ -112,7 +112,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <Spinner
 
@@ -141,7 +141,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <Spinner
 
@@ -171,7 +171,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <Spinner
 
@@ -201,7 +201,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 <!--                    <by.chekun.multispinner.SingleSpinner-->
 <!--                        android:id="@+id/condition_spinner"-->
@@ -230,7 +230,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <EditText
                         android:id="@+id/txt_price_value"
@@ -260,7 +260,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <EditText
                         android:id="@+id/txt_description_value"
@@ -290,7 +290,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 <!--                    <by.chekun.multispinner.SingleSpinner-->
 <!--                        android:id="@+id/engine_spinner"-->
@@ -319,7 +319,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <EditText
                         android:id="@+id/txt_engine_capacity"
@@ -350,7 +350,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
                     <EditText
                         android:id="@+id/txt_mileage"
@@ -379,7 +379,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 
 <!--                    <by.chekun.multispinner.SingleSpinner-->
@@ -409,7 +409,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 
 <!--                    <by.chekun.multispinner.SingleSpinner-->
@@ -440,7 +440,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 <!--                    <by.chekun.multispinner.SingleSpinner-->
 <!--                        android:id="@+id/color_spinner"-->
@@ -469,7 +469,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 <!--                    <by.chekun.multispinner.SingleSpinner-->
 <!--                        android:id="@+id/interior_material_spinner"-->
@@ -498,7 +498,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 <!--                    <by.chekun.multispinner.SingleSpinner-->
 <!--                        android:id="@+id/interior_color_spinner"-->
@@ -527,7 +527,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 <!--                    <by.chekun.multispinner.MultiSpinnerSearch-->
 <!--                        android:id="@+id/safeties_spinner"-->
@@ -556,7 +556,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/list_odd">
+                    android:background="@color/colorBlueAccent">
 
 <!--                    <by.chekun.multispinner.MultiSpinnerSearch-->
 <!--                        android:id="@+id/interior_spinner"-->

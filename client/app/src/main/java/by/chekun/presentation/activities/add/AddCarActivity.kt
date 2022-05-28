@@ -310,7 +310,7 @@ class AddCarActivity : BaseActivity() {
             val interiorColorId: Long = addActivitySpinners[INTERIOR_COLOR_TYPE_SPINNER_KEY]!!.selectedItemId
             val interiorMaterialId: Long = addActivitySpinners[INTERIOR_MATERIAL_TYPE_SPINNER_KEY]!!.selectedItemId
             val releaseYear: Int = (addActivitySpinners[RELEASE_YEAR_SPINNER_KEY]!!.selectedItem as ReleaseYearDto).releaseYear
-//
+
 //            val safetyIds = (addActivitySpinners[SAFETIES_MULTIPLE_SPINNER_KEY] as MultiSpinnerSearch).selectedIds
 //            val interiorIds = (addActivitySpinners[INTERIOR_MULTIPLE_SPINNER_KEY] as MultiSpinnerSearch).selectedIds
 
