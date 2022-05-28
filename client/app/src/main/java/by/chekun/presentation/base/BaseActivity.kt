@@ -23,7 +23,7 @@ import androidx.core.content.ContextCompat
 import by.chekun.App
 import by.chekun.R
 import by.chekun.di.component.ViewModelComponent
-import by.chekun.presentation.activities.add.AddCarActivity
+import by.chekun.presentation.activities.add.AddAdvertisementActivity
 import by.chekun.presentation.activities.settings.SettingsActivity
 import by.chekun.utils.hideKeyboardEx
 import java.util.*
@@ -62,7 +62,7 @@ abstract class BaseActivity : AppCompatActivity() {
         //handle presses on the action bar items
         when (item.itemId) {
             R.id.action_add_car -> {
-                startActivity(Intent(this, AddCarActivity::class.java))
+                startActivity(Intent(this, AddAdvertisementActivity::class.java))
                 return true
             }
             R.id.action_settings -> {

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="by.chekun.presentation.activities.add.AddCarActivity">
+    tools:context="by.chekun.presentation.activities.add.AddAdvertisementActivity">
 
     
     <item

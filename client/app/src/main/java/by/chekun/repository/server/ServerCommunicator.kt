@@ -1,13 +1,9 @@
 package by.chekun.repository.server
 
 import android.util.Log
-import by.chekun.repository.database.entity.brand.BrandResponse
-import by.chekun.repository.database.entity.car.AddRequestDto
-import by.chekun.repository.database.entity.car.AddResponse
-import by.chekun.repository.database.entity.car.chassis.ChassisComponent
-import by.chekun.repository.database.entity.car.equipment.EquipmentComponent
-import by.chekun.repository.database.entity.car.interior.InteriorComponent
-import by.chekun.repository.database.entity.car.view.AdvertisementResp
+import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
+import by.chekun.repository.database.entity.advertisement.AddResponse
+import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import io.reactivex.ObservableTransformer
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
@@ -27,8 +23,9 @@ class ServerCommunicator(private val mService: ApiService) {
         private const val DEFAULT_RETRY_ATTEMPTS = 4L
     }
 
-    fun getAllCars(): Single<Response<AddResponse>> {
-        return mService.getCars()
+    fun getAllAdvertisements(): Single<Response<AddResponse>> {
+
+        return mService.getAdvertisements()
                 .compose(singleTransformer())
                 .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
     }
@@ -37,25 +34,8 @@ class ServerCommunicator(private val mService: ApiService) {
         return mService.getCarById(id).compose(singleTransformer())
     }
 
-    fun saveCar(add: AddRequestDto): Call<AdvertisementResp> {
+    fun saveCar(add: AddAdvertisementRequest): Call<AdvertisementResp> {
         return mService.saveCar(add)
-    }
-
-
-    fun getBrands(): Call<BrandResponse>? {
-        return mService.getBrands()
-    }
-
-    fun getEquipment(): Call<EquipmentComponent>? {
-        return mService.getEquipment()
-    }
-
-    fun getChassis(): Call<ChassisComponent> {
-        return mService.getChassis()
-    }
-
-    fun getInterior(): Call<InteriorComponent> {
-        return mService.getInterior()
     }
 
     fun createPartFromString(value: String): RequestBody {

@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:orientation="vertical"
-        tools:context=".presentation.activities.add.AddCarActivity">
+        tools:context=".presentation.activities.add.AddAdvertisementActivity">
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -39,188 +39,17 @@
                     android:text="@string/label_select_image" />
 
 
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-
-                    <TextView
-                        android:id="@+id/label_brand_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_car_brand"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-                    <Spinner
-                        android:id="@+id/brand_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </RelativeLayout>
-
+                <!-- TITLE -->
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
                     <TextView
-                        android:id="@+id/label_model_spinner"
+                        android:id="@+id/label_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_car_model"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-                    <Spinner
-
-                        android:id="@+id/model_spinner"
-                        android:layout_width="match_parent"
-
-                        android:layout_height="wrap_content" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_release_year_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_release_year"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-                    <Spinner
-
-                        android:id="@+id/release_year_spinner"
-                        android:layout_width="match_parent"
-
-                        android:layout_height="wrap_content" />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_generation_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_generation_spinner"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-                    <Spinner
-
-                        android:id="@+id/generation_spinner"
-                        android:layout_width="match_parent"
-
-                        android:layout_height="wrap_content" />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_body_type_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_body_type"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-                    <Spinner
-
-                        android:id="@+id/body_type_spinner"
-                        android:layout_width="match_parent"
-
-                        android:layout_height="wrap_content" />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_condition_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_condition"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-<!--                    <by.chekun.multispinner.SingleSpinner-->
-<!--                        android:id="@+id/condition_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:labelFor="@id/txt_price_value"
-                        android:text="@string/label_price"
+                        android:labelFor="@id/txt_title"
+                        android:text="@string/label_advertisement_title"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
@@ -233,14 +62,16 @@
                     android:background="@color/colorBlueAccent">
 
                     <EditText
-                        android:id="@+id/txt_price_value"
+                        android:id="@+id/txt_title"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="введите стоимость"
-                        android:inputType="numberDecimal" />
-
+                        android:layout_height="fill_parent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="@string/txt_default_car_description" />
                 </RelativeLayout>
 
+
+                <!-- body -->
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
@@ -249,7 +80,7 @@
                         android:id="@+id/label_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:labelFor="@id/txt_description_value"
+                        android:labelFor="@id/txt_body"
                         android:text="@string/label_description"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp"
@@ -263,7 +94,7 @@
                     android:background="@color/colorBlueAccent">
 
                     <EditText
-                        android:id="@+id/txt_description_value"
+                        android:id="@+id/txt_body"
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
                         android:ems="10"
@@ -272,15 +103,17 @@
                 </RelativeLayout>
 
 
+                <!-- Тип объявления -->
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
                     <TextView
-                        android:id="@+id/label_engine_Type"
+                        android:id="@+id/label_type_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_engine_type"
+                        android:labelFor="@id/type_spinner"
+                        android:text="@string/label_advertisement_type"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
@@ -292,280 +125,13 @@
                     android:layout_height="fill_parent"
                     android:background="@color/colorBlueAccent">
 
-<!--                    <by.chekun.multispinner.SingleSpinner-->
-<!--                        android:id="@+id/engine_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_engine_capacity"
+                    <Spinner
+                        android:id="@+id/type_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:labelFor="@id/txt_mileage"
-                        android:text="@string/label_engine_capacity"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:layout_height="wrap_content" />
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-                    <EditText
-                        android:id="@+id/txt_engine_capacity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autofillHints="1"
-                        android:ems="10"
-                        android:inputType="numberDecimal" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_mileage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:labelFor="@id/txt_mileage"
-                        android:text="@string/label_mileage"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-                    <EditText
-                        android:id="@+id/txt_mileage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="number" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_transmission_type"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_transmission"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-
-<!--                    <by.chekun.multispinner.SingleSpinner-->
-<!--                        android:id="@+id/transmission_type_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_wheel_drive_type"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_wheel_drive_type"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-
-<!--                    <by.chekun.multispinner.SingleSpinner-->
-<!--                        android:id="@+id/wheel_drive_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_color"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_color"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-<!--                    <by.chekun.multispinner.SingleSpinner-->
-<!--                        android:id="@+id/color_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_interior_material"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_interior_material"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-<!--                    <by.chekun.multispinner.SingleSpinner-->
-<!--                        android:id="@+id/interior_material_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_interior_color"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_interior_color"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-<!--                    <by.chekun.multispinner.SingleSpinner-->
-<!--                        android:id="@+id/interior_color_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_safeties"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/labelSafeties"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-<!--                    <by.chekun.multispinner.MultiSpinnerSearch-->
-<!--                        android:id="@+id/safeties_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <TextView
-                        android:id="@+id/label_interior"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_interior"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="@color/colorBlueAccent">
-
-<!--                    <by.chekun.multispinner.MultiSpinnerSearch-->
-<!--                        android:id="@+id/interior_spinner"-->
-<!--                        android:layout_width="fill_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_margin="10dp" />-->
-
-
-                </RelativeLayout>
 
                 <Button
                     android:id="@+id/car_save_button"

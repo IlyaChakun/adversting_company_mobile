@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cars hub</string>
+    <string name="app_name">Advertisement app</string>
     <string name="EXTRAS_ID">ID</string>
     <string name="txt_default_name">Name</string>
     <string name="txt_default_surname">Surname</string>
@@ -77,6 +77,13 @@
     <string name="label_car_detail_interior">Элементы интерьера</string>
 
 
+
+
+    <string name="label_advertisement_title">Заголовок</string>
+    <string name="label_advertisement_body">Тело</string>
+
+    <string name="label_advertisement_type">Тип объявления</string>
+
     <!-- -->
 
     <string-array name="brand_ids">
@@ -86,7 +93,13 @@
 
 
 
-
+    <string-array name="types_array">
+        <item>advertising_in_stores</item>
+        <item>TV_advertising</item>
+        <item>radio_advertising</item>
+        <item>outdoor_advertising</item>
+        <item>internet_advertising</item>
+    </string-array>
 
 
 

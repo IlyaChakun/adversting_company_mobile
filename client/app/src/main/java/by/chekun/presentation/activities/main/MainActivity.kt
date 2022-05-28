@@ -10,18 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.chekun.R
 import by.chekun.databinding.ActivityMainBinding
 import by.chekun.di.component.ViewModelComponent
-import by.chekun.domain.AllCarsViewModel
+import by.chekun.domain.AllAdvertisementsViewModel
 import by.chekun.presentation.activities.detail.DetailActivity
-import by.chekun.presentation.adapter.CarAdapter
+import by.chekun.presentation.adapter.AdvertisementAdapter
 import by.chekun.presentation.base.BaseActivity
 import by.chekun.presentation.item.CarItemClickListener
-import by.chekun.repository.database.entity.car.view.AdvertisementResp
+import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
 
-    var viewModel: AllCarsViewModel? = null
+    var viewModel: AllAdvertisementsViewModel? = null
         @Inject set
 
     lateinit var binding: ActivityMainBinding
@@ -38,10 +38,10 @@ class MainActivity : BaseActivity() {
     private fun initRecyclerView(cars: List<AdvertisementResp>) {
 
         val manager = LinearLayoutManager(this)
-        val carAdapter = CarAdapter( this, cars, itemClickListener)
-        carAdapter.setItemClickListener(itemClickListener)
+        val advertisementAdapter = AdvertisementAdapter( this, cars, itemClickListener)
+        advertisementAdapter.setItemClickListener(itemClickListener)
         rvUsers.layoutManager = manager
-        rvUsers.adapter = carAdapter
+        rvUsers.adapter = advertisementAdapter
     }
 
 

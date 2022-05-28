@@ -3,9 +3,9 @@ package by.chekun.di.module
 import android.app.Application
 import by.chekun.App
 import by.chekun.di.scope.ViewModelScope
-import by.chekun.domain.AddCarViewModel
-import by.chekun.domain.AllCarsViewModel
-import by.chekun.domain.SingleCarViewModel
+import by.chekun.domain.AddAdvertisementViewModel
+import by.chekun.domain.AllAdvertisementsViewModel
+import by.chekun.domain.SingleAdvertisementViewModel
 import by.chekun.repository.AppRepository
 
 import dagger.Module
@@ -18,19 +18,19 @@ class ViewModelModule(app: App) {
 
     @ViewModelScope
     @Provides
-    internal fun providesAllCarsViewModel(repository: AppRepository): AllCarsViewModel {
-        return AllCarsViewModel(app, repository)
+    internal fun providesAllCarsViewModel(repository: AppRepository): AllAdvertisementsViewModel {
+        return AllAdvertisementsViewModel(app, repository)
     }
 
     @ViewModelScope
     @Provides
-    internal fun providesSingleCarViewModel(repository: AppRepository): SingleCarViewModel {
-        return SingleCarViewModel(app, repository)
+    internal fun providesSingleCarViewModel(repository: AppRepository): SingleAdvertisementViewModel {
+        return SingleAdvertisementViewModel(app, repository)
     }
 
     @ViewModelScope
     @Provides
-    internal fun providesAddCarViewModel(repository: AppRepository): AddCarViewModel {
-        return AddCarViewModel(app, repository)
+    internal fun providesAddCarViewModel(repository: AppRepository): AddAdvertisementViewModel {
+        return AddAdvertisementViewModel(app, repository)
     }
 }

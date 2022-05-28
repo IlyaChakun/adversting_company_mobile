@@ -3,32 +3,24 @@ package by.chekun.presentation.activities.detail
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.style.LeadingMarginSpan
 import android.view.MenuItem
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import by.chekun.R
 import by.chekun.databinding.CarDetailBinding
 import by.chekun.di.component.ViewModelComponent
-import by.chekun.domain.SingleCarViewModel
+import by.chekun.domain.SingleAdvertisementViewModel
 import by.chekun.presentation.base.BaseActivity
-import by.chekun.repository.database.entity.car.view.AdvertisementResp
+import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import java.util.*
 import javax.inject.Inject
 
 class DetailActivity : BaseActivity() {
 
-    var viewModel: SingleCarViewModel? = null
+    var viewModel: SingleAdvertisementViewModel? = null
         @Inject set
 
     private lateinit var binding: CarDetailBinding
@@ -75,11 +67,11 @@ class DetailActivity : BaseActivity() {
     }
 
     private fun initOrderedList(car: AdvertisementResp) {
-        val safetiesLabel: TextView = findViewById(R.id.labelSafeties)
-        val safeties: TextView = findViewById(R.id.safeties)
-
-        val interiorLabel: TextView = findViewById(R.id.labelInterior)
-        val interior: TextView = findViewById(R.id.interior)
+//        val safetiesLabel: TextView = findViewById(R.id.labelSafeties)
+//        val safeties: TextView = findViewById(R.id.safeties)
+//
+//        val interiorLabel: TextView = findViewById(R.id.labelInterior)
+//        val interior: TextView = findViewById(R.id.interior)
 
 //        if (car.safeties.isEmpty()) {
 //            safetiesLabel.visibility = View.INVISIBLE;
