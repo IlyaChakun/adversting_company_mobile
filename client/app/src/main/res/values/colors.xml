@@ -7,4 +7,5 @@
     <color name="colorBlack">#000000</color>
     <item name="colorBlueAccent" type="color">#0CBABA</item>
     <color name="colorGrey">#D5CECE</color>
+    <color name="list_odd">#D5CECE</color>
 </resources>

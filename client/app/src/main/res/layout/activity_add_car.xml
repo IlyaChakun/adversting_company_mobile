@@ -49,7 +49,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_car_brand"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -75,7 +75,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_car_model"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -104,7 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_release_year"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -133,7 +133,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_generation_spinner"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -162,7 +162,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_body_type"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -192,7 +192,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_condition"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -203,11 +203,11 @@
                     android:layout_height="fill_parent"
                     android:background="@color/list_odd">
 
-                    <by.chekun.multispinner.SingleSpinner
-                        android:id="@+id/condition_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.SingleSpinner-->
+<!--                        android:id="@+id/condition_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
                 </RelativeLayout>
 
@@ -221,7 +221,7 @@
                         android:layout_height="wrap_content"
                         android:labelFor="@id/txt_price_value"
                         android:text="@string/label_price"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -251,7 +251,7 @@
                         android:layout_height="wrap_content"
                         android:labelFor="@id/txt_description_value"
                         android:text="@string/label_description"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -281,7 +281,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_engine_type"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -292,11 +292,11 @@
                     android:layout_height="fill_parent"
                     android:background="@color/list_odd">
 
-                    <by.chekun.multispinner.SingleSpinner
-                        android:id="@+id/engine_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.SingleSpinner-->
+<!--                        android:id="@+id/engine_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
                 </RelativeLayout>
 
 
@@ -310,7 +310,7 @@
                         android:layout_height="wrap_content"
                         android:labelFor="@id/txt_mileage"
                         android:text="@string/label_engine_capacity"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -341,7 +341,7 @@
                         android:layout_height="wrap_content"
                         android:labelFor="@id/txt_mileage"
                         android:text="@string/label_mileage"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -370,7 +370,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_transmission"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -382,11 +382,11 @@
                     android:background="@color/list_odd">
 
 
-                    <by.chekun.multispinner.SingleSpinner
-                        android:id="@+id/transmission_type_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.SingleSpinner-->
+<!--                        android:id="@+id/transmission_type_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
                 </RelativeLayout>
 
@@ -400,7 +400,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_wheel_drive_type"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -412,11 +412,11 @@
                     android:background="@color/list_odd">
 
 
-                    <by.chekun.multispinner.SingleSpinner
-                        android:id="@+id/wheel_drive_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.SingleSpinner-->
+<!--                        android:id="@+id/wheel_drive_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
 
                 </RelativeLayout>
@@ -431,7 +431,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_color"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -442,11 +442,11 @@
                     android:layout_height="fill_parent"
                     android:background="@color/list_odd">
 
-                    <by.chekun.multispinner.SingleSpinner
-                        android:id="@+id/color_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.SingleSpinner-->
+<!--                        android:id="@+id/color_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
                 </RelativeLayout>
 
@@ -460,7 +460,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_interior_material"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -471,11 +471,11 @@
                     android:layout_height="fill_parent"
                     android:background="@color/list_odd">
 
-                    <by.chekun.multispinner.SingleSpinner
-                        android:id="@+id/interior_material_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.SingleSpinner-->
+<!--                        android:id="@+id/interior_material_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
                 </RelativeLayout>
 
@@ -489,7 +489,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_interior_color"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -500,11 +500,11 @@
                     android:layout_height="fill_parent"
                     android:background="@color/list_odd">
 
-                    <by.chekun.multispinner.SingleSpinner
-                        android:id="@+id/interior_color_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.SingleSpinner-->
+<!--                        android:id="@+id/interior_color_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
                 </RelativeLayout>
 
@@ -518,7 +518,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/labelSafeties"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -529,11 +529,11 @@
                     android:layout_height="fill_parent"
                     android:background="@color/list_odd">
 
-                    <by.chekun.multispinner.MultiSpinnerSearch
-                        android:id="@+id/safeties_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.MultiSpinnerSearch-->
+<!--                        android:id="@+id/safeties_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
 
                 </RelativeLayout>
@@ -547,7 +547,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_interior"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -558,11 +558,11 @@
                     android:layout_height="fill_parent"
                     android:background="@color/list_odd">
 
-                    <by.chekun.multispinner.MultiSpinnerSearch
-                        android:id="@+id/interior_spinner"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp" />
+<!--                    <by.chekun.multispinner.MultiSpinnerSearch-->
+<!--                        android:id="@+id/interior_spinner"-->
+<!--                        android:layout_width="fill_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp" />-->
 
 
                 </RelativeLayout>
