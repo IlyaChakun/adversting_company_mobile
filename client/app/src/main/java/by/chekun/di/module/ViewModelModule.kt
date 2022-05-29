@@ -6,6 +6,7 @@ import by.chekun.di.scope.ViewModelScope
 import by.chekun.domain.AddAdvertisementViewModel
 import by.chekun.domain.AllAdvertisementsViewModel
 import by.chekun.domain.SingleAdvertisementViewModel
+import by.chekun.domain.UserViewModel
 import by.chekun.repository.AppRepository
 
 import dagger.Module
@@ -32,5 +33,11 @@ class ViewModelModule(app: App) {
     @Provides
     internal fun providesAddCarViewModel(repository: AppRepository): AddAdvertisementViewModel {
         return AddAdvertisementViewModel(app, repository)
+    }
+
+    @ViewModelScope
+    @Provides
+    internal fun provideUserViewModel(repository: AppRepository): UserViewModel {
+        return UserViewModel(app, repository)
     }
 }

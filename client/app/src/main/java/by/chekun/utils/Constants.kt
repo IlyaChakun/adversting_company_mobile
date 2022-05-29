@@ -7,7 +7,8 @@ const val TITLE_TEXT_VIEW_KEY = "titleTextView"
 const val BODY_TEXT_VIEW_KEY = "bodyTextView"
 
 
-
+const val LOGIN_TEXT_VIEW_KEY = "loginTextView"
+const val PASSWORD_TEXT_VIEW_KEY = "passwordTextView"
 
 
 // old down

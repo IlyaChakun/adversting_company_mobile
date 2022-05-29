@@ -24,6 +24,7 @@ import by.chekun.App
 import by.chekun.R
 import by.chekun.di.component.ViewModelComponent
 import by.chekun.presentation.activities.add.AddAdvertisementActivity
+import by.chekun.presentation.activities.login.LoginActivity
 import by.chekun.presentation.activities.settings.SettingsActivity
 import by.chekun.utils.hideKeyboardEx
 import java.util.*
@@ -63,6 +64,10 @@ abstract class BaseActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_add_car -> {
                 startActivity(Intent(this, AddAdvertisementActivity::class.java))
+                return true
+            }
+            R.id.action_login -> {
+                startActivity(Intent(this, LoginActivity::class.java))
                 return true
             }
             R.id.action_settings -> {

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="LoginBinding">
+
+        <variable
+            name="loginReq"
+            type="by.chekun.repository.database.entity.user.LoginRequest" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        tools:context=".presentation.activities.login.LoginActivity">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            style="@style/layout_width_and_height_match">
+
+            <LinearLayout
+                style="@style/layout_width_and_height_match"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <!-- login -->
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/label_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/txt_login"
+                        android:text="@string/label_login"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorBlueAccent">
+
+                    <EditText
+                        android:id="@+id/txt_login"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="" />
+                </RelativeLayout>
+
+
+                <!-- pass -->
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/label_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/txt_pass"
+                        android:text="@string/label_password"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorBlueAccent">
+
+                    <EditText
+                        android:id="@+id/txt_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="" />
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/car_save_button"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="clickSaveCar"
+                    android:text="@string/button_enter" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</layout>

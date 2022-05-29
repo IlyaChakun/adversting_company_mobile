@@ -38,6 +38,23 @@
         <activity android:name="by.chekun.presentation.activities.detail.DetailActivity" />
         <activity android:name="by.chekun.presentation.activities.main.MainActivity" />
 
+<!--        <activity android:name="by.chekun.presentation.activities.login.LoginActivity" />-->
+
+
+        <!-- login -->
+        <activity
+            android:name="by.chekun.presentation.activities.login.LoginActivity"
+            android:label="@string/action_login"
+            android:parentActivityName="by.chekun.presentation.activities.main.MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="by.chekun.presentation.activities.main.MainActivity" />
+        </activity>
+
+
+
         <activity
             android:name="by.chekun.presentation.activities.add.AddAdvertisementActivity"
             android:label="@string/action_add_car"

@@ -3,6 +3,8 @@ package by.chekun.repository
 import by.chekun.repository.database.AppDatabase
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
+import by.chekun.repository.database.entity.user.AccessTokenDTO
+import by.chekun.repository.database.entity.user.LoginRequest
 import by.chekun.repository.server.ServerCommunicator
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -40,6 +42,10 @@ class AppRepository(private val serverCommunicator: ServerCommunicator, private 
 
     fun postImage(carId: Long, picture: MultipartBody.Part): Call<AdvertisementResp> {
         return serverCommunicator.postImage(carId, picture)
+    }
+
+    fun login(req: LoginRequest): Call<AccessTokenDTO> {
+        return serverCommunicator.login(req)
     }
 
 }

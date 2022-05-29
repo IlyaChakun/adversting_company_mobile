@@ -4,6 +4,8 @@ import android.util.Log
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.AddResponse
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
+import by.chekun.repository.database.entity.user.AccessTokenDTO
+import by.chekun.repository.database.entity.user.LoginRequest
 import io.reactivex.ObservableTransformer
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
@@ -46,6 +48,10 @@ class ServerCommunicator(private val mService: ApiService) {
 
     fun postImage(carId: Long, picture: MultipartBody.Part): Call<AdvertisementResp> {
         return mService.postImage(carId, picture)
+    }
+
+    fun login(req: LoginRequest): Call<AccessTokenDTO> {
+        return mService.login(req)
     }
 
     private fun <T> singleTransformer(): SingleTransformer<T, T> = SingleTransformer {
