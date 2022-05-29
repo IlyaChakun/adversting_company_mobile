@@ -1,17 +1,21 @@
 package by.iba.service.impl;
 
-import by.iba.dto.req.user.UserAvatarReqDTO;
-import by.iba.dto.req.user.UserPersonalDataReqDTO;
-import by.iba.helper.ControllerHelper;
 import by.iba.UserController;
-import by.iba.service.UserService;
+import by.iba.dto.req.user.UserAvatarReqDTO;
 import by.iba.dto.req.user.UserCredentialsReqDTO;
+import by.iba.dto.req.user.UserPersonalDataReqDTO;
 import by.iba.dto.resp.user.RespStatusDTO;
 import by.iba.dto.resp.user.UserResp;
+import by.iba.helper.ControllerHelper;
+import by.iba.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -20,6 +24,22 @@ import javax.validation.Valid;
 public class UserControllerImpl implements UserController {
 
     private final UserService userService;
+
+    @Override
+    public UserResp getMe() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+
+        UserResp userResp = userService.findByEmail(username);
+
+        return userResp;
+    }
 
     @Override
     public ResponseEntity<UserResp> getUserById(@PathVariable Long id) {

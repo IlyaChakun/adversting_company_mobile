@@ -1,6 +1,7 @@
 package by.chekun.repository
 
 import by.chekun.repository.database.AppDatabase
+import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import by.chekun.repository.database.entity.user.AccessTokenDTO
@@ -48,4 +49,14 @@ class AppRepository(private val serverCommunicator: ServerCommunicator, private 
         return serverCommunicator.login(req)
     }
 
+
+    fun saveUser(user: User) {
+        val user = mainDatabase.userDao().saveUser(user = user)
+
+    }
+
+    fun getCurrentUser(): User {
+        val user = mainDatabase.userDao().getMe()
+        return user
+    }
 }

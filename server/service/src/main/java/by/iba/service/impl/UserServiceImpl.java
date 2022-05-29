@@ -54,6 +54,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserResp findByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(ResourceNotFoundException::new);
+
+        return userMapper.toDto(user);
+    }
+
+    @Override
     @Transactional
     public UserResp save(UserReq userReq) {
 

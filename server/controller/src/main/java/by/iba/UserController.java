@@ -1,8 +1,8 @@
 package by.iba;
 
 import by.iba.dto.req.user.UserAvatarReqDTO;
-import by.iba.dto.req.user.UserPersonalDataReqDTO;
 import by.iba.dto.req.user.UserCredentialsReqDTO;
+import by.iba.dto.req.user.UserPersonalDataReqDTO;
 import by.iba.dto.resp.user.RespStatusDTO;
 import by.iba.dto.resp.user.UserResp;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +13,9 @@ import javax.validation.Valid;
 
 @RequestMapping(path = "/api/v1/users")
 public interface UserController {
+
+    @GetMapping()
+    UserResp getMe();
 
     @GetMapping("/{id}")
     ResponseEntity<UserResp> getUserById(@PathVariable Long id);

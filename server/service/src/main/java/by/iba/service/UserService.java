@@ -12,6 +12,8 @@ public interface UserService {
 
     UserResp findById(Long id);
 
+    UserResp findByEmail(String email);
+
     UserResp save(UserReq userReq);
 
     User login(UserAuthReqDTO userAuthReqDTO);
