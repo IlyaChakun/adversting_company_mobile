@@ -126,7 +126,7 @@ class LoginActivity : BaseActivity() {
     }
 
 
-    fun clickSaveCar(view: View?) {
+    fun clockLogin(view: View?) {
 
         if (this.isAllFieldsValid()) {
 
