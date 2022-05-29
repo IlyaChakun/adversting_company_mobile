@@ -11,9 +11,9 @@ data class User(
 
         val firstName: String,
         val lastName: String,
-        val email: String,
+        val email: String
 
-        val accessTokenDTO: AccessTokenDTO
+     //   val accessTokenDTO: AccessTokenDTO
 
         //roles
 )

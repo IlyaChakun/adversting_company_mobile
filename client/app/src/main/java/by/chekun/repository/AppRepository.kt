@@ -4,6 +4,8 @@ import by.chekun.repository.database.AppDatabase
 import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
+import by.chekun.repository.database.entity.advertisement.view.AdvertisementStatus
+import by.chekun.repository.database.entity.advertisement.view.AdvertisementType
 import by.chekun.repository.database.entity.user.AccessTokenDTO
 import by.chekun.repository.database.entity.user.LoginRequest
 import by.chekun.repository.server.ServerCommunicator
