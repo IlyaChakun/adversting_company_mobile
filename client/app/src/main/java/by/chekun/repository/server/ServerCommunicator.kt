@@ -4,8 +4,7 @@ import android.util.Log
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.AddResponse
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
-import by.chekun.repository.database.entity.user.AccessTokenDTO
-import by.chekun.repository.database.entity.user.LoginRequest
+import by.chekun.repository.database.entity.user.*
 import io.reactivex.ObservableTransformer
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
@@ -15,6 +14,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Header
 import java.util.concurrent.TimeUnit
 
 
@@ -52,6 +52,14 @@ class ServerCommunicator(private val mService: ApiService) {
 
     fun login(req: LoginRequest): Call<AccessTokenDTO> {
         return mService.login(req)
+    }
+
+    fun register(req: RegisterRequest): Call<TextResp> {
+        return mService.register(req)
+    }
+
+    fun getMe(header: Map<String, String>): Call<UserResp> {
+        return mService.getMe(header)
     }
 
     private fun <T> singleTransformer(): SingleTransformer<T, T> = SingleTransformer {

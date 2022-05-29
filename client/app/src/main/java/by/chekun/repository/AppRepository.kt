@@ -4,8 +4,7 @@ import by.chekun.repository.database.AppDatabase
 import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
-import by.chekun.repository.database.entity.user.AccessTokenDTO
-import by.chekun.repository.database.entity.user.LoginRequest
+import by.chekun.repository.database.entity.user.*
 import by.chekun.repository.server.ServerCommunicator
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -52,11 +51,23 @@ class AppRepository(private val serverCommunicator: ServerCommunicator, private 
 
     fun saveUser(user: User) {
         val user = mainDatabase.userDao().saveUser(user = user)
+        return user
+    }
 
+    fun deleteAll() {
+        mainDatabase.userDao().deleteAll()
     }
 
     fun getCurrentUser(): User {
         val user = mainDatabase.userDao().getMe()
         return user
+    }
+
+    fun register(req: RegisterRequest): Call<TextResp> {
+        return serverCommunicator.register(req)
+    }
+
+    fun getMe(headers: Map<String, String>): Call<UserResp> {
+        return serverCommunicator.getMe(headers)
     }
 }

@@ -51,7 +51,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
         Advertisement advertisement = advertisementMapper.toEntityFromReq(advertisementReq);
 
-        User user = userRepository.getOne(advertisementReq.getUserId());
+        User user = userRepository.findById(advertisementReq.getUserId()).orElseThrow(ResourceNotFoundException::new);
         advertisement.setUser(user);
 
         Advertisement saved = advertisementRepository.save(advertisement);

@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data class="LoginBinding">
+    <data class="RegistrationBinding">
 
         <variable
-            name="loginReq"
-            type="by.chekun.repository.database.entity.user.LoginRequest" />
+            name="refisterReq"
+            type="by.chekun.repository.database.entity.user.RegisterRequest" />
     </data>
 
 
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:orientation="vertical"
-        tools:context=".presentation.activities.login.LoginActivity">
+        tools:context=".presentation.activities.login.RegisterActivity">
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -34,19 +34,19 @@
                     android:orientation="vertical"
                     android:gravity="center"
                     android:layout_height="@dimen/registration_photo_height"
-                    android:src="@drawable/login_image" />
+                    android:src="@drawable/registration" />
 
-                <!-- login -->
+                <!-- firstName -->
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
                     <TextView
-                        android:id="@+id/label_title"
+                        android:id="@+id/label_firstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:labelFor="@id/txt_login"
-                        android:text="@string/label_login"
+                        android:labelFor="@id/txt_firstName"
+                        android:text="@string/label_firstName"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp"
                         android:textStyle="bold" />
@@ -59,7 +59,69 @@
                     android:background="@color/colorBlueAccent">
 
                     <EditText
-                        android:id="@+id/txt_login"
+                        android:id="@+id/txt_firstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="" />
+                </RelativeLayout>
+
+                <!-- lastName -->
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/label_lastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/txt_lastName"
+                        android:text="@string/label_lastName"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorBlueAccent">
+
+                    <EditText
+                        android:id="@+id/txt_lastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="" />
+                </RelativeLayout>
+
+                <!-- login -->
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/label_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/txt_email"
+                        android:text="@string/label_email"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorBlueAccent">
+
+                    <EditText
+                        android:id="@+id/txt_email"
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
                         android:ems="10"
@@ -95,7 +157,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
                         android:ems="10"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:text="" />
                 </RelativeLayout>
 
@@ -105,8 +167,8 @@
                     style="@style/Base.Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="clockLogin"
-                    android:text="@string/button_enter" />
+                    android:onClick="clickRegister"
+                    android:text="@string/button_register" />
 
             </LinearLayout>
 

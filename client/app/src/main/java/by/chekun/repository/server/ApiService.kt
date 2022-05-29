@@ -3,8 +3,7 @@ package by.chekun.repository.server
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.AddResponse
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
-import by.chekun.repository.database.entity.user.AccessTokenDTO
-import by.chekun.repository.database.entity.user.LoginRequest
+import by.chekun.repository.database.entity.user.*
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -38,6 +37,16 @@ interface ApiService {
 
     @POST("/api/v1/auth")
     fun login(@Body loginRequest: LoginRequest): Call<AccessTokenDTO>
+
+    @POST("/api/v1/auth/registration")
+    fun register(@Body registerRequest: RegisterRequest): Call<TextResp>
+
+    @GET("/api/v1/users")
+    fun getMe(@HeaderMap headers: Map<String, String> ): Call<UserResp>
+
+
+
+
 
 //    @Multipart
 //    @POST("/cars")

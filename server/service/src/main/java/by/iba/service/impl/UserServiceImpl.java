@@ -49,8 +49,13 @@ public class UserServiceImpl implements UserService {
     public UserResp findById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(ResourceNotFoundException::new);
+        UserResp userResp = userMapper.toDto(user);
 
-        return userMapper.toDto(user);
+        user.getRoles().forEach(it->
+                        userResp.getRoles().add(new UserRoleDTO(it.getName()))
+        );
+
+        return userResp;
     }
 
     @Override

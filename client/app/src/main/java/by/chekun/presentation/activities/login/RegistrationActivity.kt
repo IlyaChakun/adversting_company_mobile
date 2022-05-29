@@ -1,33 +1,30 @@
 package by.chekun.presentation.activities.login
 
-
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.Menu
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import by.chekun.R
 import by.chekun.di.component.ViewModelComponent
 import by.chekun.domain.UserViewModel
-import by.chekun.presentation.activities.add.DecimalDigitsInputFilter
 import by.chekun.presentation.activities.add.TextViewValidStatus
 import by.chekun.presentation.activities.main.MainActivity
 import by.chekun.presentation.base.BaseActivity
-import by.chekun.repository.database.entity.User
-import by.chekun.repository.database.entity.user.AccessTokenDTO
-import by.chekun.repository.database.entity.user.LoginRequest
-import by.chekun.repository.database.entity.user.UserResp
-import by.chekun.utils.*
+import by.chekun.repository.database.entity.user.RegisterRequest
+import by.chekun.repository.database.entity.user.TextResp
+import by.chekun.utils.LOGIN_TEXT_VIEW_KEY
+import by.chekun.utils.PASSWORD_TEXT_VIEW_KEY
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import javax.inject.Inject
 
-
-class LoginActivity : BaseActivity() {
+class RegistrationActivity : BaseActivity() {
 
     var viewModel: UserViewModel? = null
         @Inject set
@@ -37,9 +34,9 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.supportActionBar?.title = "Авторизация"
+        this.supportActionBar?.title = "Регистрация"
 
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_registration)
 
         Objects.requireNonNull(supportActionBar)?.setDisplayHomeAsUpEnabled(true)
 
@@ -55,11 +52,15 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun createEditTextFieldsMap() {
-        val login: TextView = findViewById(R.id.txt_login)
+        val firstName: TextView = findViewById(R.id.txt_firstName)
+        val lastName: TextView = findViewById(R.id.txt_lastName)
+        val email: TextView = findViewById(R.id.txt_email)
         val pass: TextView = findViewById(R.id.txt_pass)
 
 
-        editTextFieldsMap[LOGIN_TEXT_VIEW_KEY] = TextViewValidStatus(login, false)
+        editTextFieldsMap[LOGIN_TEXT_VIEW_KEY] = TextViewValidStatus(firstName, false)
+        editTextFieldsMap[LOGIN_TEXT_VIEW_KEY] = TextViewValidStatus(lastName, false)
+        editTextFieldsMap[LOGIN_TEXT_VIEW_KEY] = TextViewValidStatus(email, false)
         editTextFieldsMap[PASSWORD_TEXT_VIEW_KEY] = TextViewValidStatus(pass, false)
     }
 
@@ -125,60 +126,37 @@ class LoginActivity : BaseActivity() {
 //        })
     }
 
-    private fun initDigitsFilter() {
-        val priceTextView = editTextFieldsMap[PRICE_TEXT_VIEW_KEY]!!.textField
-        priceTextView.filters = arrayOf<InputFilter>(DecimalDigitsInputFilter(10, 2))
-    }
 
-
-    fun clockLogin(view: View?) {
+    fun clickRegister(view: View?) {
 
         if (this.isAllFieldsValid()) {
 
-            val login = findViewById<EditText>(R.id.txt_login).text.toString()
+            val firstName = findViewById<EditText>(R.id.txt_firstName).text.toString()
+
+            val lastName = findViewById<EditText>(R.id.txt_lastName).text.toString()
+
+            val email = findViewById<EditText>(R.id.txt_email).text.toString()
 
             val pass = findViewById<EditText>(R.id.txt_pass).text.toString()
 
-            val req = LoginRequest()
+            val req = RegisterRequest()
 
-            req.login = login
+            req.firstName = firstName
+            req.lastName = lastName
+            req.email = email
             req.password = pass
 
-            viewModel?.login(req)?.enqueue(object : Callback<AccessTokenDTO> {
+            viewModel?.register(req)?.enqueue(object : Callback<TextResp> {
 
-                override fun onResponse(call: Call<AccessTokenDTO>?, response: Response<AccessTokenDTO>) {
+                override fun onResponse(call: Call<TextResp>?, response: Response<TextResp>) {
 
                     Toast.makeText(applicationContext, response.code().toString() + " ", Toast.LENGTH_SHORT).show()
 
                     if (response.isSuccessful) {
 
-                        showToast("Login successful")
-                        val tokenDTO = response.body()
-                        val authHeader = mapOf("Authorisation" to response.body()?.accessToken)
-                        viewModel?.getMe(authHeader as Map<String, String>)?.enqueue(object : Callback<UserResp> {
-                            override fun onResponse(call: Call<UserResp>,response: Response<UserResp>) {
+                        showToast("Registration successful")
 
-                                viewModel?.deleteAll()
-
-                                val user = User(
-                                    response.body()?.id!!,
-                                    response.body()?.firstName!!,
-                                    response.body()?.lastName!!,
-                                    response.body()?.email!!,
-                                    tokenDTO!!,
-                                    response.body()?.roles?.get(0)!!
-                                )
-
-                                viewModel?.saveUser(user)
-                            }
-
-                            override fun onFailure(call: Call<UserResp>, t: Throwable) {
-                                Toast.makeText(applicationContext, "User has been not found", Toast.LENGTH_SHORT).show()
-                            }
-                        })
-
-
-                        showMainActivity()
+                        showLoginActivity()
 
                     } else {
                         showToast("Wrong login or password.")
@@ -186,7 +164,7 @@ class LoginActivity : BaseActivity() {
 
                 }
 
-                override fun onFailure(call: Call<AccessTokenDTO>?, t: Throwable?) {
+                override fun onFailure(call: Call<TextResp>?, t: Throwable?) {
                     Toast.makeText(applicationContext, "Wrong login or password", Toast.LENGTH_SHORT).show()
                     t?.printStackTrace()
                 }
@@ -203,6 +181,10 @@ class LoginActivity : BaseActivity() {
         startActivity(MainActivity.newInstance(this))
     }
 
+    private fun showLoginActivity() {
+        startActivity(LoginActivity.newInstance(this))
+    }
+
     override fun injectDependency(component: ViewModelComponent) {
         component.inject(this)
     }
@@ -211,15 +193,4 @@ class LoginActivity : BaseActivity() {
         menuInflater.inflate(R.menu.menu_add_new_car, menu)
         return true
     }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(context: Context): Intent {
-            val intent = Intent(context, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            return intent
-        }
-    }
-
 }
-
