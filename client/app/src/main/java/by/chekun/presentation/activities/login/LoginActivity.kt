@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.text.InputFilter
 import android.view.Menu
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import by.chekun.R
 import by.chekun.di.component.ViewModelComponent
 import by.chekun.domain.UserViewModel
@@ -19,7 +22,9 @@ import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.user.AccessTokenDTO
 import by.chekun.repository.database.entity.user.LoginRequest
 import by.chekun.repository.database.entity.user.UserResp
-import by.chekun.utils.*
+import by.chekun.utils.LOGIN_TEXT_VIEW_KEY
+import by.chekun.utils.PASSWORD_TEXT_VIEW_KEY
+import by.chekun.utils.PRICE_TEXT_VIEW_KEY
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -156,17 +161,19 @@ class LoginActivity : BaseActivity() {
                         val tokenDTO = response.body()
                         val authHeader = mapOf("Authorisation" to response.body()?.accessToken)
                         viewModel?.getMe(authHeader as Map<String, String>)?.enqueue(object : Callback<UserResp> {
-                            override fun onResponse(call: Call<UserResp>,response: Response<UserResp>) {
+                            override fun onResponse(call: Call<UserResp>, response: Response<UserResp>) {
 
                                 viewModel?.deleteAll()
 
                                 val user = User(
-                                    response.body()?.id!!,
-                                    response.body()?.firstName!!,
-                                    response.body()?.lastName!!,
-                                    response.body()?.email!!,
-                                    tokenDTO!!,
-                                    response.body()?.roles?.get(0)!!
+                                        response.body()?.id!!,
+                                        response.body()?.firstName!!,
+                                        response.body()?.lastName!!,
+                                        response.body()?.email!!,
+                                        accessToken = tokenDTO?.accessToken,
+                                        tokenType = tokenDTO?.tokenType,
+                                        expiresIn = tokenDTO!!.expiresIn,
+                                        role = response.body()?.roles?.get(0)!!.role
                                 )
 
                                 viewModel?.saveUser(user)

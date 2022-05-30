@@ -2,8 +2,6 @@ package by.chekun.repository.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import by.chekun.repository.database.entity.user.AccessTokenDTO
-import by.chekun.repository.database.entity.user.UserRoleDTO
 
 @Entity(tableName = "users")
 data class User(
@@ -14,6 +12,8 @@ data class User(
         val lastName: String,
         val email: String,
 
-        val accessTokenDTO: AccessTokenDTO,
-        val roleDTO: UserRoleDTO
+        val accessToken: String? = null,
+        val tokenType: String? = null,
+        val expiresIn: Long = 0,
+        var role: String? = null
 )
