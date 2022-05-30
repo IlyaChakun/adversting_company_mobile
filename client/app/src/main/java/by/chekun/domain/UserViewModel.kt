@@ -15,7 +15,7 @@ class UserViewModel(application: Application, private val mRepository: AppReposi
         return mRepository.login(req)
     }
 
-    fun getMe(): User {
+    fun getCurrentUser(): User {
         return mRepository.getCurrentUser()
     }
 

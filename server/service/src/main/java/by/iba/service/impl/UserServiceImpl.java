@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -63,7 +64,13 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(ResourceNotFoundException::new);
 
-        return userMapper.toDto(user);
+        UserResp userResp = userMapper.toDto(user);
+        userResp.setRoles(user.getRoles()
+                .stream()
+                .map(x-> new UserRoleDTO(x.getName()))
+                .collect(Collectors.toList()));
+
+        return userResp;
     }
 
     @Override

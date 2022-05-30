@@ -42,7 +42,7 @@ interface ApiService {
     fun register(@Body registerRequest: RegisterRequest): Call<TextResp>
 
     @GET("/api/v1/users")
-    fun getMe(@HeaderMap headers: Map<String, String> ): Call<UserResp>
+    fun getMe(@HeaderMap headers: Map<String, String>): Call<UserResp>
 
 
 

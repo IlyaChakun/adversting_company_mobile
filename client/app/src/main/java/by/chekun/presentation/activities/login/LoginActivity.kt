@@ -70,7 +70,7 @@ class LoginActivity : BaseActivity() {
 
 
     private fun isAllFieldsValid(): Boolean {
-        var isValid = true
+        val isValid = true
 
         if (!isValid) {
             showToast("Заполните все обязательные поля!")
@@ -151,7 +151,10 @@ class LoginActivity : BaseActivity() {
 
             viewModel?.login(req)?.enqueue(object : Callback<AccessTokenDTO> {
 
-                override fun onResponse(call: Call<AccessTokenDTO>?, response: Response<AccessTokenDTO>) {
+                override fun onResponse(
+                    call: Call<AccessTokenDTO>,
+                    response: Response<AccessTokenDTO>
+                ) {
 
                     Toast.makeText(applicationContext, response.code().toString() + " ", Toast.LENGTH_SHORT).show()
 
@@ -159,24 +162,30 @@ class LoginActivity : BaseActivity() {
 
                         showToast("Login successful")
                         val tokenDTO = response.body()
-                        val authHeader = mapOf("Authorisation" to response.body()?.accessToken)
-                        viewModel?.getMe(authHeader as Map<String, String>)?.enqueue(object : Callback<UserResp> {
-                            override fun onResponse(call: Call<UserResp>, response: Response<UserResp>) {
 
-                                viewModel?.deleteAll()
+                        val headers = HashMap<String, String>()
+                        headers["Authorization"] = "Bearer " + response.body()?.accessToken
 
-                                val user = User(
-                                        response.body()?.id!!,
-                                        response.body()?.firstName!!,
-                                        response.body()?.lastName!!,
-                                        response.body()?.email!!,
-                                        accessToken = tokenDTO?.accessToken,
-                                        tokenType = tokenDTO?.tokenType,
-                                        expiresIn = tokenDTO!!.expiresIn,
-                                        role = response.body()?.roles?.get(0)!!.role
-                                )
+                        viewModel?.getMe(headers)?.enqueue(object : Callback<UserResp> {
+                            override fun onResponse( callback: Call<UserResp>, resp: Response<UserResp>) {
+                                if (resp.isSuccessful) {
 
-                                viewModel?.saveUser(user)
+                                    viewModel?.deleteAll()
+                                    val userResp = resp.body()
+                                    val user = User(
+                                            id = userResp?.id!!,
+                                            firstName = userResp.firstName!!,
+                                            lastName = userResp.lastName!!,
+                                            email = userResp.email!!,
+                                            accessToken = tokenDTO?.accessToken,
+                                            tokenType = tokenDTO?.tokenType,
+                                            expiresIn = tokenDTO!!.expiresIn,
+                                            role = userResp.roles?.get(0)!!.role
+                                    )
+
+                                    viewModel?.saveUser(user)
+
+                                }
                             }
 
                             override fun onFailure(call: Call<UserResp>, t: Throwable) {
@@ -193,9 +202,9 @@ class LoginActivity : BaseActivity() {
 
                 }
 
-                override fun onFailure(call: Call<AccessTokenDTO>?, t: Throwable?) {
+                override fun onFailure(call: Call<AccessTokenDTO>, t: Throwable) {
                     Toast.makeText(applicationContext, "Wrong login or password", Toast.LENGTH_SHORT).show()
-                    t?.printStackTrace()
+                    t.printStackTrace()
                 }
             })
         }
