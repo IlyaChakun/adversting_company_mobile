@@ -3,6 +3,7 @@ package by.chekun.repository.server
 import android.util.Log
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.AddResponse
+import by.chekun.repository.database.entity.advertisement.RespChangeStatus
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import by.chekun.repository.database.entity.user.*
 import io.reactivex.ObservableTransformer
@@ -14,7 +15,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Header
 import java.util.concurrent.TimeUnit
 
 
@@ -28,6 +28,13 @@ class ServerCommunicator(private val mService: ApiService) {
     fun getAllAdvertisements(): Single<Response<AddResponse>> {
 
         return mService.getAdvertisements()
+                .compose(singleTransformer())
+                .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
+    }
+
+    fun getPendingAdvertisements(): Single<Response<AddResponse>> {
+
+        return mService.getAdminAdvertisements()
                 .compose(singleTransformer())
                 .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
     }
@@ -60,6 +67,10 @@ class ServerCommunicator(private val mService: ApiService) {
 
     fun getMe(header: Map<String, String>): Call<UserResp> {
         return mService.getMe(header)
+    }
+
+    fun setPublishStatus(respChangeStatus: RespChangeStatus): Call<TextResp> {
+        return mService.setPublishStatus(respChangeStatus)
     }
 
     private fun <T> singleTransformer(): SingleTransformer<T, T> = SingleTransformer {

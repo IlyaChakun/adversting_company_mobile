@@ -73,4 +73,14 @@ public class AdvertisementControllerImpl implements AdvertisementController {
                 .body(pageWrapper);
     }
 
+    @Override
+    public ResponseEntity<PageWrapper<AdvertisementResp>> findAllForAdmin(Integer page, Integer size, AdvertisementReqParams advertisementReqParams) {
+        final PageWrapper<AdvertisementResp> pageWrapper = advertisementService.findAllForAdmin(page, size, advertisementReqParams);
+
+
+        return ResponseEntity
+                .ok()
+                .body(pageWrapper);
+    }
+
 }

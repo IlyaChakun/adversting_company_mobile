@@ -6,6 +6,7 @@ import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.user.*
 import okhttp3.Headers
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.HeaderMap
 
 class UserViewModel(application: Application, private val mRepository: AppRepository) : BaseViewModel(application) {

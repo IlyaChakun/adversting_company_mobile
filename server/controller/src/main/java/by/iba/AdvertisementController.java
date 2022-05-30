@@ -31,4 +31,9 @@ public interface AdvertisementController {
     ResponseEntity<PageWrapper<AdvertisementResp>> findAll(@RequestParam(defaultValue = "0", required = false) final Integer page,
                                                            @RequestParam(defaultValue = "10", required = false) final Integer size,
                                                            AdvertisementReqParams advertisementReqParams);
+
+    @GetMapping("/admin")
+    ResponseEntity<PageWrapper<AdvertisementResp>> findAllForAdmin(@RequestParam(defaultValue = "0", required = false) final Integer page,
+                                                           @RequestParam(defaultValue = "10", required = false) final Integer size,
+                                                           AdvertisementReqParams advertisementReqParams);
 }

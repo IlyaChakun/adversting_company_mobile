@@ -14,5 +14,7 @@ public interface AdvertisementService {
 
     PageWrapper<AdvertisementResp> findAll(final Integer page, final Integer size, AdvertisementReqParams advertisementReqParams);
 
+    PageWrapper<AdvertisementResp> findAllForAdmin(final Integer page, final Integer size, AdvertisementReqParams advertisementReqParams);
+
     AdvertisementResp udpate(AdvertisementUpdateReq req);
 }

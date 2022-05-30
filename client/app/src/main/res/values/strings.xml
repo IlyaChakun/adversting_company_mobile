@@ -94,6 +94,7 @@
 
     <string name="label_password">Пароль</string>
     <string name="button_enter">Войти</string>
+    <string name="button_publish">Опубликовать</string>
     <string name="button_register">Зарегистрироваться</string>
 
 

@@ -16,7 +16,7 @@ import javax.validation.Valid;
 public interface UserController {
 
     @GetMapping()
-    UserResp getMe();
+    ResponseEntity<UserResp> getMe();
 
     @GetMapping("/{id}")
     ResponseEntity<UserResp> getUserById(@PathVariable Long id);

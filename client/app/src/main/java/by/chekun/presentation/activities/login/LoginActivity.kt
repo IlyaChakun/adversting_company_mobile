@@ -17,6 +17,7 @@ import by.chekun.domain.UserViewModel
 import by.chekun.presentation.activities.add.DecimalDigitsInputFilter
 import by.chekun.presentation.activities.add.TextViewValidStatus
 import by.chekun.presentation.activities.main.MainActivity
+import by.chekun.presentation.activities.main.MainAdminActivity
 import by.chekun.presentation.base.BaseActivity
 import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.user.AccessTokenDTO
@@ -174,20 +175,24 @@ class LoginActivity : BaseActivity() {
                                 viewModel?.deleteAll()
                                 val userResp = response.body()
                                 val user = User(
-                                        id = userResp?.id!!,
-                                        firstName = userResp.firstName!!,
-                                        lastName = userResp.lastName!!,
-                                        email = userResp.email!!,
-                                        accessToken = tokenDTO?.accessToken,
-                                        tokenType = tokenDTO?.tokenType,
-                                        expiresIn = tokenDTO!!.expiresIn,
-                                        role = userResp.roles?.get(0)!!.role
+                                    id = userResp?.id!!,
+                                    firstName = userResp.firstName!!,
+                                    lastName = userResp.lastName!!,
+                                    email = userResp.email!!,
+                                    accessToken = tokenDTO?.accessToken,
+                                    tokenType = tokenDTO?.tokenType,
+                                    expiresIn = tokenDTO!!.expiresIn,
+                                    role = userResp.roles?.get(0)!!.role
                                 )
 
                                 showToast("Login successful")
                                 viewModel?.saveUser(user)
 
-                                showMainActivity()
+                                if(userResp.roles[0].role.equals("ADMIN")) {
+                                    showMainAdminActivity()
+                                } else {
+                                    showMainActivity()
+                                }
                             }
 
                             override fun onFailure(call: Call<UserResp?>, t: Throwable) {
@@ -196,6 +201,9 @@ class LoginActivity : BaseActivity() {
 
                             }
                         })
+
+
+                        showMainActivity()
 
                     } else {
                         showToast("Wrong login or password.")
@@ -218,6 +226,10 @@ class LoginActivity : BaseActivity() {
 
     private fun showMainActivity() {
         startActivity(MainActivity.newInstance(this))
+    }
+
+    private fun showMainAdminActivity() {
+        startActivity(MainAdminActivity.newInstance(this))
     }
 
     override fun injectDependency(component: ViewModelComponent) {

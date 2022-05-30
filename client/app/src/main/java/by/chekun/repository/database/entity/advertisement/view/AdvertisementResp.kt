@@ -22,4 +22,8 @@ class AdvertisementResp() : AbstractDto() {
     fun getStringStatus():String{
         return status.toString()
     }
+
+    fun getId():String{
+        return id.toString()
+    }
 }

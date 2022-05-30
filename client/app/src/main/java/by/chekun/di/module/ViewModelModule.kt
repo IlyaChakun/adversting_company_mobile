@@ -3,10 +3,7 @@ package by.chekun.di.module
 import android.app.Application
 import by.chekun.App
 import by.chekun.di.scope.ViewModelScope
-import by.chekun.domain.AddAdvertisementViewModel
-import by.chekun.domain.AllAdvertisementsViewModel
-import by.chekun.domain.SingleAdvertisementViewModel
-import by.chekun.domain.UserViewModel
+import by.chekun.domain.*
 import by.chekun.repository.AppRepository
 
 import dagger.Module
@@ -21,6 +18,12 @@ class ViewModelModule(app: App) {
     @Provides
     internal fun providesAllCarsViewModel(repository: AppRepository): AllAdvertisementsViewModel {
         return AllAdvertisementsViewModel(app, repository)
+    }
+
+    @ViewModelScope
+    @Provides
+    internal fun providesPendingCarsViewModel(repository: AppRepository): PendingAdvertisementsViewModel {
+        return PendingAdvertisementsViewModel(app, repository)
     }
 
     @ViewModelScope
