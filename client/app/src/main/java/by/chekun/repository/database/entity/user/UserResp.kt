@@ -5,8 +5,6 @@ import java.time.LocalDateTime
 class UserResp {
 
     val version: Int? = null
-    val dateOfCreation: LocalDateTime? = null
-    val dateOfLastUpdate: LocalDateTime? = null
     val id: Long? = null
     val firstName: String? = null
     val lastName: String? = null

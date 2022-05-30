@@ -160,41 +160,42 @@ class LoginActivity : BaseActivity() {
 
                     if (response.isSuccessful) {
 
-                        showToast("Login successful")
                         val tokenDTO = response.body()
 
                         val headers = HashMap<String, String>()
                         headers["Authorization"] = "Bearer " + response.body()?.accessToken
 
-                        viewModel?.getMe(headers)?.enqueue(object : Callback<UserResp> {
-                            override fun onResponse( callback: Call<UserResp>, resp: Response<UserResp>) {
-                                if (resp.isSuccessful) {
+                        val getMeCallBack: Call<UserResp>? = viewModel?.getMe(headers)
 
-                                    viewModel?.deleteAll()
-                                    val userResp = resp.body()
-                                    val user = User(
-                                            id = userResp?.id!!,
-                                            firstName = userResp.firstName!!,
-                                            lastName = userResp.lastName!!,
-                                            email = userResp.email!!,
-                                            accessToken = tokenDTO?.accessToken,
-                                            tokenType = tokenDTO?.tokenType,
-                                            expiresIn = tokenDTO!!.expiresIn,
-                                            role = userResp.roles?.get(0)!!.role
-                                    )
+                        getMeCallBack?.enqueue(object : Callback<UserResp?> {
 
-                                    viewModel?.saveUser(user)
+                            override fun onResponse(call: Call<UserResp?>, response: Response<UserResp?>) {
 
-                                }
+                                viewModel?.deleteAll()
+                                val userResp = response.body()
+                                val user = User(
+                                        id = userResp?.id!!,
+                                        firstName = userResp.firstName!!,
+                                        lastName = userResp.lastName!!,
+                                        email = userResp.email!!,
+                                        accessToken = tokenDTO?.accessToken,
+                                        tokenType = tokenDTO?.tokenType,
+                                        expiresIn = tokenDTO!!.expiresIn,
+                                        role = userResp.roles?.get(0)!!.role
+                                )
+
+                                showToast("Login successful")
+                                viewModel?.saveUser(user)
+
+                                showMainActivity()
                             }
 
-                            override fun onFailure(call: Call<UserResp>, t: Throwable) {
-                                Toast.makeText(applicationContext, "User has been not found", Toast.LENGTH_SHORT).show()
+                            override fun onFailure(call: Call<UserResp?>, t: Throwable) {
+                                t.printStackTrace()
+                                Toast.makeText(applicationContext, "Request failed", Toast.LENGTH_SHORT).show()
+
                             }
                         })
-
-
-                        showMainActivity()
 
                     } else {
                         showToast("Wrong login or password.")
