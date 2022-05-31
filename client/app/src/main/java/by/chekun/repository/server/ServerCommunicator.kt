@@ -3,9 +3,9 @@ package by.chekun.repository.server
 import android.util.Log
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.AddResponse
+import by.chekun.repository.database.entity.advertisement.RespChangeStatus
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
-import by.chekun.repository.database.entity.user.AccessTokenDTO
-import by.chekun.repository.database.entity.user.LoginRequest
+import by.chekun.repository.database.entity.user.*
 import io.reactivex.ObservableTransformer
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
@@ -32,6 +32,13 @@ class ServerCommunicator(private val mService: ApiService) {
                 .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
     }
 
+    fun getPendingAdvertisements(): Single<Response<AddResponse>> {
+
+        return mService.getAdminAdvertisements()
+                .compose(singleTransformer())
+                .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
+    }
+
     fun getCar(id: Long): Single<AdvertisementResp> {
         return mService.getCarById(id).compose(singleTransformer())
     }
@@ -52,6 +59,18 @@ class ServerCommunicator(private val mService: ApiService) {
 
     fun login(req: LoginRequest): Call<AccessTokenDTO> {
         return mService.login(req)
+    }
+
+    fun register(req: RegisterRequest): Call<TextResp> {
+        return mService.register(req)
+    }
+
+    fun getMe(header: Map<String, String>): Call<UserResp> {
+        return mService.getMe(header)
+    }
+
+    fun setPublishStatus(respChangeStatus: RespChangeStatus): Call<TextResp> {
+        return mService.setPublishStatus(respChangeStatus)
     }
 
     private fun <T> singleTransformer(): SingleTransformer<T, T> = SingleTransformer {

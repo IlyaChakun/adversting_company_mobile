@@ -250,6 +250,9 @@ class AddAdvertisementActivity : BaseActivity() {
 
             carRequestDto.userId = 0 //todo!
 
+            // getMe into mobile db
+
+
 //            var byteArray: ByteArray? = null
 //            val carImage = findViewById<ImageView>(R.id.image_view)
 //            val mBitmap = (carImage.drawable as BitmapDrawable).bitmap

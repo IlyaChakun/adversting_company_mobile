@@ -23,9 +23,6 @@ public class UserReq implements Serializable {
     @Size(message = "Length is too large", max = ReqValidation.MAX_LAST_NAME_LENGTH)
     private String lastName;
 
-    @NotBlank(message = "Login cannot be empty")
-    private String login;
-
     @NotBlank(message = "Password cannot be empty")
     @Size(message = "Password is too large or too small",
             min = ReqValidation.MIN_PASSWORD_LENGTH,

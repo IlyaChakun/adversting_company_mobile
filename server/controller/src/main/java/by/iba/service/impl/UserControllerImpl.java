@@ -26,7 +26,7 @@ public class UserControllerImpl implements UserController {
     private final UserService userService;
 
     @Override
-    public UserResp getMe() {
+    public ResponseEntity<UserResp> getMe() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         String username;
@@ -38,7 +38,9 @@ public class UserControllerImpl implements UserController {
 
         UserResp userResp = userService.findByEmail(username);
 
-        return userResp;
+        return ResponseEntity
+                .ok()
+                .body(userResp);
     }
 
     @Override

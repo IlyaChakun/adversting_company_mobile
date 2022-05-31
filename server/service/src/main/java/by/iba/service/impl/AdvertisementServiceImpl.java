@@ -6,6 +6,7 @@ import by.iba.dto.req.advertisement.AdvertisementReq;
 import by.iba.dto.req.advertisement.AdvertisementUpdateReq;
 import by.iba.dto.resp.advertisement.AdvertisementResp;
 import by.iba.entity.user.Advertisement;
+import by.iba.entity.user.AdvertisementStatus;
 import by.iba.entity.user.User;
 import by.iba.exception.ResourceNotFoundException;
 import by.iba.mapper.AdvertisementMapper;
@@ -51,7 +52,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
         Advertisement advertisement = advertisementMapper.toEntityFromReq(advertisementReq);
 
-        User user = userRepository.getOne(advertisementReq.getUserId());
+        User user = userRepository.findById(advertisementReq.getUserId()).orElseThrow(ResourceNotFoundException::new);
         advertisement.setUser(user);
 
         Advertisement saved = advertisementRepository.save(advertisement);
@@ -88,6 +89,37 @@ public class AdvertisementServiceImpl implements AdvertisementService {
             requests = advertisementRepository.findAll(specification, pageable);
         } else {
             requests = advertisementRepository.findAll(pageable);
+        }
+
+        return
+                new PageWrapper<>(advertisementMapper
+                        .toDtoList(requests.toList()),
+                        requests.getTotalPages(),
+                        requests.getTotalElements());
+    }
+
+    @Override
+    public PageWrapper<AdvertisementResp> findAllForAdmin(Integer page, Integer size, AdvertisementReqParams advertisementReqParams) {
+        Sort sort = null;
+        if (advertisementReqParams.getSortByRating()) {
+            sort = Sort.by("ratingSum").descending();
+        }
+        Pageable pageable;
+        if (sort != null) {
+            pageable = PageRequest.of(page, size, sort);
+        } else {
+            pageable = PageRequest.of(page, size);
+        }
+
+        Page<Advertisement>
+                requests;
+        if (!advertisementReqParams.getAdvertisementTypes().isEmpty()) {
+            Specification<Advertisement> specification =
+                    getAdvertisementSpecification(advertisementReqParams.getAdvertisementTypes());
+
+            requests = advertisementRepository.findAllByStatusEquals(specification, pageable, AdvertisementStatus.PENDING);
+        } else {
+            requests = advertisementRepository.findAllByStatusEquals(pageable, AdvertisementStatus.PENDING);
         }
 
         return

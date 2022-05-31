@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -49,8 +50,13 @@ public class UserServiceImpl implements UserService {
     public UserResp findById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(ResourceNotFoundException::new);
+        UserResp userResp = userMapper.toDto(user);
 
-        return userMapper.toDto(user);
+        user.getRoles().forEach(it->
+                        userResp.getRoles().add(new UserRoleDTO(it.getName()))
+        );
+
+        return userResp;
     }
 
     @Override
@@ -58,7 +64,13 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(ResourceNotFoundException::new);
 
-        return userMapper.toDto(user);
+        UserResp userResp = userMapper.toDto(user);
+        userResp.setRoles(user.getRoles()
+                .stream()
+                .map(x-> new UserRoleDTO(x.getName()))
+                .collect(Collectors.toList()));
+
+        return userResp;
     }
 
     @Override

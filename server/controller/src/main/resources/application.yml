@@ -12,7 +12,7 @@ spring:
     #username: postgres
     #password: 1111
     username: postgres
-    password: 1111
+    password: admin
   ##################### JPA USED SPRING DATA #################################
   jpa:
     hibernate:
@@ -39,7 +39,7 @@ spring:
 security-token-app:
   auth:
     accessTokenSecret: secretKey
-    accessTokenExpirationMsec: 30000000 #60000=one minute; remove one 0 and show tokes death
+    accessTokenExpirationMsec: 999999999 #60000=one minute; remove one 0 and show tokes death
 
     refreshTokenSecret: 926D96C90030DD58429D2751AC1BDBBC
     refreshTokenExpirationMsec: 120000000 #one minute; remove one 0 and show tokes death

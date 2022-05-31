@@ -6,7 +6,10 @@ import by.chekun.di.scope.ViewModelScope
 import by.chekun.presentation.activities.add.AddAdvertisementActivity
 import by.chekun.presentation.activities.detail.DetailActivity
 import by.chekun.presentation.activities.login.LoginActivity
+import by.chekun.presentation.activities.login.RegistrationActivity
 import by.chekun.presentation.activities.main.MainActivity
+import by.chekun.presentation.activities.main.MainAdminActivity
+import by.chekun.repository.database.entity.user.RegisterRequest
 import dagger.Component
 
 @ViewModelScope
@@ -16,4 +19,6 @@ interface ViewModelComponent {
     fun inject(activity: DetailActivity)
     fun inject(activity: AddAdvertisementActivity)
     fun inject(activity: LoginActivity)
+    fun inject(activity: RegistrationActivity)
+    fun inject(activity: MainAdminActivity)
 }
