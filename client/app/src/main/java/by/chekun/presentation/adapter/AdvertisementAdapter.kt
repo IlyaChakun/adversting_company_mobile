@@ -45,7 +45,7 @@ class AdvertisementAdapter(
 //
 //            holder.carItemImage?.setImageBitmap(bmp)
 //        } else {
-            Picasso.get().load("https://sl2.d.umn.edu/och/PhotoGallery/no-image-available.jpg").into(holder.carItemImage)
+            Picasso.get().load("https://image.shutterstock.com/z/stock-photo-a-picture-of-the-beautiful-view-of-birds-1836263689.jpg").into(holder.carItemImage)
         //}
     }
 
