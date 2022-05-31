@@ -3,6 +3,7 @@ package by.chekun.repository
 import by.chekun.repository.database.AppDatabase
 import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
+import by.chekun.repository.database.entity.advertisement.AdvertisementRatingRequest
 import by.chekun.repository.database.entity.advertisement.RespChangeStatus
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import by.chekun.repository.database.entity.user.*
@@ -11,6 +12,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MultipartBody
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Response
 
@@ -37,8 +39,8 @@ class AppRepository(private val serverCommunicator: ServerCommunicator, private 
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getCar(id: Long): Single<AdvertisementResp> {
-        return serverCommunicator.getCar(id)
+/*    fun getAdvertisement(id: Long): Single<AdvertisementResp> {
+        return serverCommunicator.getAdvertisement(id)
 //                .map {
 //                    //val user = mainDatabase.carDao().getById(id)
 //                  //  user
@@ -46,10 +48,18 @@ class AppRepository(private val serverCommunicator: ServerCommunicator, private 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
-    }
+    }*/
 
     fun saveCar(add: AddAdvertisementRequest): Call<AdvertisementResp> {
         return serverCommunicator.saveCar(add)
+    }
+
+    fun getAdv(advId: Long): Call<AdvertisementResp> {
+        return serverCommunicator.getAdvertisement(advId)
+    }
+
+    fun addRating(req: AdvertisementRatingRequest): Call<TextResp> {
+        return serverCommunicator.addAdvertisementRating(req)
     }
 
     fun postImage(carId: Long, picture: MultipartBody.Part): Call<AdvertisementResp> {

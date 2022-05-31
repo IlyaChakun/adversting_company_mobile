@@ -34,7 +34,10 @@ class AdvertisementViewHolder(private val binding: CarItemBinding)
         binding.root.setOnClickListener(itemDetail)
         if( binding.root.adv_publish != null ) {
             binding.root.adv_publish.setOnClickListener(itemDetail)
-            binding.root.adv_publish.setTag(advertisement?.id)
+        }
+
+        if( binding.root.adv_denied != null ) {
+            binding.root.adv_denied.setOnClickListener(itemDetail)
         }
     }
 

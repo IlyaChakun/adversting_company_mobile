@@ -88,18 +88,26 @@
 
 
     <string name="label_login">Логин</string>
+    <string name="label_comment">Укажите комментарий</string>
     <string name="label_email">Email</string>
     <string name="label_firstName">Имя</string>
     <string name="label_lastName">Фамилия</string>
 
     <string name="label_password">Пароль</string>
     <string name="button_enter">Войти</string>
+    <string name="button_comment">Прокомментировать</string>
     <string name="button_publish">Опубликовать</string>
     <string name="button_register">Зарегистрироваться</string>
 
 
     <string name="action_login">Войти</string>
     <string name="action_registration">Зарегистрироваться</string>
+    <string name="rateNumber1">1</string>
+    <string name="rateNumber2">2</string>
+    <string name="rateNumber3">3</string>
+    <string name="rateNumber4">4</string>
+    <string name="rateNumber5">5</string>
+    <string name="rateTheAdv">Оцените рекламу!</string>
 
     <!-- -->
 

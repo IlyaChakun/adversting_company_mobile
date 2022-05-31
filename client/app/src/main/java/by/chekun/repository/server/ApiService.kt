@@ -2,6 +2,7 @@ package by.chekun.repository.server
 
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.AddResponse
+import by.chekun.repository.database.entity.advertisement.AdvertisementRatingRequest
 import by.chekun.repository.database.entity.advertisement.RespChangeStatus
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import by.chekun.repository.database.entity.user.*
@@ -21,8 +22,11 @@ interface ApiService {
     @GET("/api/v1/advertisements/admin")
     fun getAdminAdvertisements(): Single<Response<AddResponse>>
 
-    @GET("/cars/{id}")
-    fun getCarById(@Path("id") id: Long): Single<AdvertisementResp>
+    @GET("/api/v1/advertisements/{id}")
+    fun getAdvertisementById(@Path("id") id: Long): Call<AdvertisementResp>
+
+    @POST("/api/v1/advertisements-rating")
+    fun addAdvertisementRating(@Body addRequest: AdvertisementRatingRequest): Call<TextResp>
 
 
     @POST("/api/v1/advertisements")

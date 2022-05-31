@@ -1,22 +1,28 @@
 package by.chekun.presentation.activities.add
 
+//import by.chekun.multispinner.MultiSpinnerSearch
+//import by.chekun.multispinner.SingleSpinner
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
+import android.os.FileUtils
 import android.text.InputFilter
+import android.util.Base64.*
 import android.view.Menu
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import by.chekun.R
 import by.chekun.di.component.ViewModelComponent
 import by.chekun.domain.AddAdvertisementViewModel
-//import by.chekun.multispinner.MultiSpinnerSearch
-//import by.chekun.multispinner.SingleSpinner
 import by.chekun.presentation.activities.main.MainActivity
 import by.chekun.presentation.base.BaseActivity
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
@@ -27,9 +33,11 @@ import by.chekun.utils.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.HashMap
 
 
 class AddAdvertisementActivity : BaseActivity() {
@@ -231,6 +239,7 @@ class AddAdvertisementActivity : BaseActivity() {
     }
 
 
+    @RequiresApi(VERSION_CODES.O)
     fun clickSaveCar(view: View?) {
 
         if (this.isAllFieldsValid()) {
@@ -253,18 +262,22 @@ class AddAdvertisementActivity : BaseActivity() {
             // getMe into mobile db
 
 
-//            var byteArray: ByteArray? = null
-//            val carImage = findViewById<ImageView>(R.id.image_view)
-//            val mBitmap = (carImage.drawable as BitmapDrawable).bitmap
-//            val bos = ByteArrayOutputStream()
-//            mBitmap.compress(Bitmap.CompressFormat.PNG, 0, bos)
-//            byteArray = bos.toByteArray()
-//            val filesDir: File = applicationContext.filesDir
-//            val file = File(filesDir, "image" + ".png")
-//            val fos = FileOutputStream(file)
-//            fos.write(byteArray)
-//            fos.flush()
-//            fos.close()
+            var byteArray: ByteArray? = null
+            val carImage = findViewById<ImageView>(R.id.image_view)
+            val mBitmap = (carImage.drawable as BitmapDrawable).bitmap
+            val bos = ByteArrayOutputStream()
+            mBitmap.compress(Bitmap.CompressFormat.PNG, 0, bos)
+            byteArray = bos.toByteArray()
+            val filesDir: File = applicationContext.filesDir
+            val file = File(filesDir, "image" + ".png")
+            val fos = FileOutputStream(file)
+            fos.write(byteArray)
+            fos.flush()
+            fos.close()
+
+            val encoder: Base64.Encoder = Base64.getEncoder()
+            val encodedString: String = encoder.encodeToString(file.toString().toByteArray())
+            carRequestDto.picture = encodedString
 //            val requestBody: RequestBody = RequestBody.create(MediaType.parse("image/*"), file)
 //            val multipartBody: MultipartBody.Part = MultipartBody.Part.createFormData("picture", file.name, requestBody)
 

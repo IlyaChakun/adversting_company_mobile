@@ -3,6 +3,7 @@ package by.chekun.repository.server
 import android.util.Log
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.AddResponse
+import by.chekun.repository.database.entity.advertisement.AdvertisementRatingRequest
 import by.chekun.repository.database.entity.advertisement.RespChangeStatus
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import by.chekun.repository.database.entity.user.*
@@ -39,8 +40,12 @@ class ServerCommunicator(private val mService: ApiService) {
                 .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
     }
 
-    fun getCar(id: Long): Single<AdvertisementResp> {
-        return mService.getCarById(id).compose(singleTransformer())
+    fun getAdvertisement(id: Long): Call<AdvertisementResp> {
+        return mService.getAdvertisementById(id)
+    }
+
+    fun addAdvertisementRating(req: AdvertisementRatingRequest): Call<TextResp> {
+        return mService.addAdvertisementRating(req)
     }
 
     fun saveCar(add: AddAdvertisementRequest): Call<AdvertisementResp> {

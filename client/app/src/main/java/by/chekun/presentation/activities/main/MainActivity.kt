@@ -65,6 +65,8 @@ class MainActivity : BaseActivity() {
     }
 
     private fun openItemDetail(id: Long) {
-        this.startActivity(DetailActivity.newInstance(this, id))
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("advId", id)
+        startActivity(intent)
     }
 }

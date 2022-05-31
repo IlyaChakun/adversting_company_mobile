@@ -17,7 +17,7 @@ class AddAdvertisementRequest {
 
     var userId: Long? =null
 
-    var picture: RequestBody? = null
+    var picture: String? = null
    //var picture: MultipartBody.Part? = null
 
 
