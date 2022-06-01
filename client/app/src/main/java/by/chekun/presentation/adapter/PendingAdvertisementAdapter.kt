@@ -1,16 +1,21 @@
 package by.chekun.presentation.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import by.chekun.R
 import by.chekun.databinding.CarItemAdminBinding
 import by.chekun.presentation.base.BaseAdapter
 import by.chekun.presentation.item.CarItemClickListener
 import by.chekun.presentation.item.PendingAdvertisementViewHolder
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import com.squareup.picasso.Picasso
+import java.util.*
 
 
 class PendingAdvertisementAdapter (
@@ -36,15 +41,18 @@ class PendingAdvertisementAdapter (
         holder.bind(advertisementItems[position], listener)
 
         val car = advertisementItems[position]
-//        if (car.picture != null) {
-//            val base64String = car.picture
-//            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
-//            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-//
-//            holder.carItemImage?.setImageBitmap(bmp)
-//        } else {
-        Picasso.get().load("https://sl2.d.umn.edu/och/PhotoGallery/no-image-available.jpg").into(holder.carItemImage)
-        //}
+        if (car.picture != null) {
+            val base64String = car.picture
+            val decoder: Base64.Decoder = Base64.getDecoder()
+            val decoded = String(decoder.decode(base64String))
+            holder.carItemImage?.setImageURI(Uri.parse(decoded));
+/*            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
+            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+
+            holder.carItemImage?.setImageBitmap(bmp)*/
+        } else {
+            Picasso.get().load("https://image.shutterstock.com/z/stock-photo-a-picture-of-the-beautiful-view-of-birds-1836263689.jpg").into(holder.carItemImage)
+        }
     }
 
 

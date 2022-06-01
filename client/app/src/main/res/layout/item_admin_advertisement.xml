@@ -81,17 +81,6 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/adv_denied"
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="Удалить"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="16sp" />
-
             <!-- <Button
                  android:id="@+id/adv_publish"
                  style="@style/Base.Widget.AppCompat.Button.Colored"

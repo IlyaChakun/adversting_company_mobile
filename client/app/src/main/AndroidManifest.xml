@@ -38,6 +38,7 @@
         <activity android:name="by.chekun.presentation.activities.detail.DetailActivity" />
         <activity android:name="by.chekun.presentation.activities.main.MainActivity" />
         <activity android:name="by.chekun.presentation.activities.main.MainAdminActivity" />
+        <activity android:name="by.chekun.presentation.activities.user.ProfileActivity" />
 
 <!--        <activity android:name="by.chekun.presentation.activities.login.LoginActivity" />-->
 

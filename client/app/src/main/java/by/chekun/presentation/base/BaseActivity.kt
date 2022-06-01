@@ -27,6 +27,7 @@ import by.chekun.presentation.activities.add.AddAdvertisementActivity
 import by.chekun.presentation.activities.login.LoginActivity
 import by.chekun.presentation.activities.login.RegistrationActivity
 import by.chekun.presentation.activities.settings.SettingsActivity
+import by.chekun.presentation.activities.user.ProfileActivity
 import by.chekun.utils.hideKeyboardEx
 import java.util.*
 
@@ -63,6 +64,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
         //handle presses on the action bar items
         when (item.itemId) {
+            R.id.action_profile -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
+                return true
+            }
             R.id.action_add_car -> {
                 startActivity(Intent(this, AddAdvertisementActivity::class.java))
                 return true

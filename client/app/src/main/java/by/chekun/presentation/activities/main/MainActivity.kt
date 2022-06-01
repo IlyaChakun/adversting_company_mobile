@@ -4,6 +4,8 @@ package by.chekun.presentation.activities.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +14,7 @@ import by.chekun.databinding.ActivityMainBinding
 import by.chekun.di.component.ViewModelComponent
 import by.chekun.domain.AllAdvertisementsViewModel
 import by.chekun.presentation.activities.detail.DetailActivity
+import by.chekun.presentation.activities.user.ProfileActivity
 import by.chekun.presentation.adapter.AdvertisementAdapter
 import by.chekun.presentation.base.BaseActivity
 import by.chekun.presentation.item.CarItemClickListener
@@ -69,4 +72,5 @@ class MainActivity : BaseActivity() {
         intent.putExtra("advId", id)
         startActivity(intent)
     }
+
 }

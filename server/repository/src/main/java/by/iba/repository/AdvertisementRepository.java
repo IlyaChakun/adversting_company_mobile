@@ -15,6 +15,10 @@ public interface AdvertisementRepository extends BaseAbstractLongKeyRepository<A
 
     Page<Advertisement> findAllByStatusEquals(Specification<Advertisement> specification, Pageable pageable, AdvertisementStatus status);
 
+    Page<Advertisement> findAllByStatusIsNot(Specification<Advertisement> specification, Pageable pageable, AdvertisementStatus status);
+
     Page<Advertisement> findAllByStatusEquals(Pageable pageable, AdvertisementStatus status);
+
+    Page<Advertisement> findAllByStatusIsNot(Pageable pageable, AdvertisementStatus status);
 
 }

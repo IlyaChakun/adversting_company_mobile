@@ -1,6 +1,7 @@
 package by.chekun.presentation.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -38,15 +39,18 @@ class AdvertisementAdapter(
         holder.bind(advertisementItems[position], listener)
 
         val car = advertisementItems[position]
-//        if (car.picture != null) {
-//            val base64String = car.picture
-//            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
-//            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-//
-//            holder.carItemImage?.setImageBitmap(bmp)
-//        } else {
-            Picasso.get().load("https://image.shutterstock.com/z/stock-photo-a-picture-of-the-beautiful-view-of-birds-1836263689.jpg").into(holder.carItemImage)
-        //}
+        if (car.picture != null) {
+            val base64String = car.picture
+            val decoder: Base64.Decoder = Base64.getDecoder()
+            val decoded = String(decoder.decode(base64String))
+            holder.carItemImage?.setImageURI(Uri.parse(decoded));
+/*            val imageBytes: ByteArray = Base64.getDecoder().decode(base64String)
+            val bmp: Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+
+            holder.carItemImage?.setImageBitmap(bmp)*/
+        } else {
+                Picasso.get().load("https://image.shutterstock.com/z/stock-photo-a-picture-of-the-beautiful-view-of-birds-1836263689.jpg").into(holder.carItemImage)
+        }
     }
 
 

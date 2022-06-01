@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="by.chekun.presentation.activities.main.MainActivity">
 
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/profile"
+        android:title="@string/action_profile"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_registration"

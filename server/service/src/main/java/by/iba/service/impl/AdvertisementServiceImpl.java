@@ -86,9 +86,9 @@ public class AdvertisementServiceImpl implements AdvertisementService {
             Specification<Advertisement> specification =
                     getAdvertisementSpecification(advertisementReqParams.getAdvertisementTypes());
 
-            requests = advertisementRepository.findAll(specification, pageable);
+            requests = advertisementRepository.findAllByStatusIsNot(specification, pageable, AdvertisementStatus.PENDING);
         } else {
-            requests = advertisementRepository.findAll(pageable);
+            requests = advertisementRepository.findAllByStatusIsNot(pageable, AdvertisementStatus.PENDING);
         }
 
         return

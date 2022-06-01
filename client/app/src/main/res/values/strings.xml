@@ -102,6 +102,7 @@
 
     <string name="action_login">Войти</string>
     <string name="action_registration">Зарегистрироваться</string>
+    <string name="action_profile">Профиль</string>
     <string name="rateNumber1">1</string>
     <string name="rateNumber2">2</string>
     <string name="rateNumber3">3</string>

@@ -9,6 +9,7 @@ import by.chekun.presentation.activities.login.LoginActivity
 import by.chekun.presentation.activities.login.RegistrationActivity
 import by.chekun.presentation.activities.main.MainActivity
 import by.chekun.presentation.activities.main.MainAdminActivity
+import by.chekun.presentation.activities.user.ProfileActivity
 import by.chekun.repository.database.entity.user.RegisterRequest
 import dagger.Component
 
@@ -21,4 +22,5 @@ interface ViewModelComponent {
     fun inject(activity: LoginActivity)
     fun inject(activity: RegistrationActivity)
     fun inject(activity: MainAdminActivity)
+    fun inject(activity: ProfileActivity)
 }

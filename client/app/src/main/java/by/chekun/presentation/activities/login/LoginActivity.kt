@@ -225,7 +225,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun showMainActivity() {
-        startActivity(MainActivity.newInstance(this))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun showMainAdminActivity() {

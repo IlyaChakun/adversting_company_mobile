@@ -35,53 +35,54 @@
             app:layout_constraintHorizontal_bias="0.0"/>
 
         <TextView
-            android:text="@{advertisement.title}"
-            android:layout_width="269dp"
-            android:layout_height="33dp"
             android:id="@+id/title"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="236dp"
+            android:layout_height="33dp"
             android:layout_marginTop="28dp"
-            app:layout_constraintHorizontal_bias="1.0"/>
+            android:text="@{advertisement.title}"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:text="@{advertisement.body}"
-            android:layout_width="267dp"
-            android:layout_height="206dp"
             android:id="@+id/textView5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="233dp"
+            android:layout_height="206dp"
             android:layout_marginTop="96dp"
-            app:layout_constraintHorizontal_bias="1.0"/>
+            android:text="@{advertisement.body}"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:text="@{advertisement.type.name()}"
-            android:layout_width="269dp"
-            android:layout_height="245dp"
             android:id="@+id/type"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="233dp"
+            android:layout_height="246dp"
             android:layout_marginTop="56dp"
-            app:layout_constraintHorizontal_bias="1.0"/>
+            android:text="@{advertisement.type.name()}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/txtCarCardDescription"
-            android:layout_width="269dp"
-            android:layout_height="31dp"
+            android:layout_width="235dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:text="@{advertisement.status.name()}"
             android:textColor="@color/colorBlueAccent"
             android:textSize="17sp"
-            tools:ignore="NestedWeights"
+            app:layout_constraintHorizontal_bias="0.992"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="4dp"
-            app:layout_constraintHorizontal_bias="0.992"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="NestedWeights" />
 
         <Button
             android:id="@+id/rateButton4"
