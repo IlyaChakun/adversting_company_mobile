@@ -41,7 +41,7 @@ import javax.inject.Inject
 
 class DetailActivity : BaseActivity() {
 
-    var viewModel: SingleAdvertisementViewModel? = null
+    var advViewModel: SingleAdvertisementViewModel? = null
         @Inject set
 
     private lateinit var binding: CarDetailBinding
@@ -63,7 +63,7 @@ class DetailActivity : BaseActivity() {
         val advId = arguments?.get("advId")
         //viewModel?.getItem(advId as Long)
         //viewModel?.getLiveDataItem()?.observe(this, Observer { it?.let { initDataBinding(it) } })
-        viewModel?.getItem(advId as Long)?.enqueue(object : Callback<AdvertisementResp?> {
+        advViewModel?.getItem(advId as Long)?.enqueue(object : Callback<AdvertisementResp?> {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onResponse(
                 call: Call<AdvertisementResp?>,
@@ -213,7 +213,7 @@ class DetailActivity : BaseActivity() {
         req.rating = rateNumber
         req.advertisementId = advId as Long
 
-        viewModel?.addRating(req)?.enqueue(object : Callback<TextResp?> {
+        advViewModel?.addRating(req)?.enqueue(object : Callback<TextResp?> {
             override fun onResponse(
                 call: Call<TextResp?>,
                 response: Response<TextResp?>

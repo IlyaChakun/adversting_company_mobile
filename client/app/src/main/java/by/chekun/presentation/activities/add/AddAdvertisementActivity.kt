@@ -25,6 +25,7 @@ import by.chekun.di.component.ViewModelComponent
 import by.chekun.domain.AddAdvertisementViewModel
 import by.chekun.presentation.activities.main.MainActivity
 import by.chekun.presentation.base.BaseActivity
+import by.chekun.repository.database.entity.User
 import by.chekun.repository.database.entity.advertisement.AddAdvertisementRequest
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementResp
 import by.chekun.repository.database.entity.advertisement.view.AdvertisementStatus
@@ -42,7 +43,7 @@ import javax.inject.Inject
 
 class AddAdvertisementActivity : BaseActivity() {
 
-    var viewModel: AddAdvertisementViewModel? = null
+    var advViewModel: AddAdvertisementViewModel? = null
         @Inject set
 
     private var saveButton: Button? = null
@@ -254,10 +255,11 @@ class AddAdvertisementActivity : BaseActivity() {
 
             carRequestDto.title = title
             carRequestDto.body = body
-            carRequestDto.type = AdvertisementType.valueOf(type)
+            carRequestDto.type = AdvertisementType.fromOrbisString(type)
             carRequestDto.status = AdvertisementStatus.PENDING
 
-            carRequestDto.userId = 0 //todo!
+            val user: User? = viewModel?.getCurrentUser()
+            carRequestDto.userId = user?.id
 
             // getMe into mobile db
 
@@ -282,7 +284,93 @@ class AddAdvertisementActivity : BaseActivity() {
 //            val multipartBody: MultipartBody.Part = MultipartBody.Part.createFormData("picture", file.name, requestBody)
 
 
-            viewModel?.saveAdvertisement(carRequestDto)?.enqueue(object : Callback<AdvertisementResp> {
+            advViewModel?.saveAdvertisement(carRequestDto)?.enqueue(object : Callback<AdvertisementResp> {
+
+                override fun onResponse(call: Call<AdvertisementResp>?, response: Response<AdvertisementResp>) {
+
+                    Toast.makeText(applicationContext, response.code().toString() + " ", Toast.LENGTH_SHORT).show()
+
+                    if (response.isSuccessful) {
+
+                        val carId = response.body()?.id
+
+                        showToast("Advertisement added, new id = " + carId)
+
+                          showMainActivity()
+//                        val req: Call<AdvertisementResp>? = viewModel?.postImage(carId!!, multipartBody)
+//                        req?.enqueue(object : Callback<AdvertisementResp?> {
+//                            override fun onResponse(call: Call<AdvertisementResp?>, response: Response<AdvertisementResp?>) {
+//                                Toast.makeText(applicationContext, response.code().toString() + " ", Toast.LENGTH_SHORT).show()
+//
+//                                showMainActivity()
+//                            }
+//
+//                            override fun onFailure(call: Call<AdvertisementResp?>, t: Throwable) {
+//                                Toast.makeText(applicationContext, "Request failed", Toast.LENGTH_SHORT).show()
+//
+//                            }
+//                        })
+
+                    } else {
+                        showToast("Can`t create car! Fill fields according with pattern.")
+                    }
+
+                }
+
+                override fun onFailure(call: Call<AdvertisementResp>?, t: Throwable?) {
+                    Toast.makeText(applicationContext, "Request failed", Toast.LENGTH_SHORT).show()
+                    t?.printStackTrace()
+                }
+            })
+        }
+    }
+
+
+    @RequiresApi(VERSION_CODES.O)
+    fun clickDraftCar(view: View?) {
+
+        if (this.isAllFieldsValid()) {
+
+            val type = addActivitySpinners[TYPE_SPINNER_KEY]!!.selectedItem.toString()
+
+            val title = findViewById<EditText>(R.id.txt_title).text.toString()
+
+            val body = findViewById<EditText>(R.id.txt_body).text.toString()
+
+            val carRequestDto = AddAdvertisementRequest()
+
+            carRequestDto.title = title
+            carRequestDto.body = body
+            carRequestDto.type = AdvertisementType.fromOrbisString(type)
+            carRequestDto.status = AdvertisementStatus.DRAFT
+
+            val user: User? = viewModel?.getCurrentUser()
+            carRequestDto.userId = user?.id
+
+            // getMe into mobile db
+
+
+            var byteArray: ByteArray? = null
+            val carImage = findViewById<ImageView>(R.id.image_view)
+            val mBitmap = (carImage.drawable as BitmapDrawable).bitmap
+            val bos = ByteArrayOutputStream()
+            mBitmap.compress(Bitmap.CompressFormat.PNG, 0, bos)
+            byteArray = bos.toByteArray()
+            val filesDir: File = applicationContext.filesDir
+            val file = File(filesDir, "image" + ".png")
+            val fos = FileOutputStream(file)
+            fos.write(byteArray)
+            fos.flush()
+            fos.close()
+
+            val encoder: Base64.Encoder = Base64.getEncoder()
+            val encodedString: String = encoder.encodeToString(file.toString().toByteArray())
+            carRequestDto.picture = encodedString
+//            val requestBody: RequestBody = RequestBody.create(MediaType.parse("image/*"), file)
+//            val multipartBody: MultipartBody.Part = MultipartBody.Part.createFormData("picture", file.name, requestBody)
+
+
+            advViewModel?.saveAdvertisement(carRequestDto)?.enqueue(object : Callback<AdvertisementResp> {
 
                 override fun onResponse(call: Call<AdvertisementResp>?, response: Response<AdvertisementResp>) {
 

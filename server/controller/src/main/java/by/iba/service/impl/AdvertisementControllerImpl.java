@@ -8,10 +8,14 @@ import by.iba.dto.AdvertisementReqParams;
 import by.iba.dto.req.advertisement.AdvertisementReq;
 import by.iba.dto.req.advertisement.AdvertisementUpdateReq;
 import by.iba.dto.resp.advertisement.AdvertisementResp;
+import by.iba.dto.resp.user.UserResp;
 import by.iba.service.AdvertisementService;
+import by.iba.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -24,6 +28,7 @@ import java.net.URI;
 public class AdvertisementControllerImpl implements AdvertisementController {
 
     private final AdvertisementService advertisementService;
+    private final UserService userService;
 
     @Override
     public ResponseEntity<AdvertisementResp> save(AdvertisementReq transportationRequestDTO,
@@ -65,7 +70,31 @@ public class AdvertisementControllerImpl implements AdvertisementController {
 
     @Override
     public ResponseEntity<PageWrapper<AdvertisementResp>> findAll(Integer page, Integer size, AdvertisementReqParams advertisementReqParams) {
-        final PageWrapper<AdvertisementResp> pageWrapper = advertisementService.findAll(page, size, advertisementReqParams);
+        Long userId = -1L;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(!principal.toString().equals("anonymousUser")) {
+            String username;
+            if (principal instanceof UserDetails) {
+                username = ((UserDetails) principal).getUsername();
+            } else {
+                username = principal.toString();
+            }
+
+            UserResp userResp = userService.findByEmail(username);
+            userId = userResp.getId();
+        }
+
+        final PageWrapper<AdvertisementResp> pageWrapper = advertisementService.findAll(page, size, advertisementReqParams, userId);
+
+
+        return ResponseEntity
+                .ok()
+                .body(pageWrapper);
+    }
+
+    @Override
+    public ResponseEntity<PageWrapper<AdvertisementResp>> findAllPublish(Integer page, Integer size, AdvertisementReqParams advertisementReqParams) {
+        final PageWrapper<AdvertisementResp> pageWrapper = advertisementService.findAllPublish(page, size, advertisementReqParams);
 
 
         return ResponseEntity

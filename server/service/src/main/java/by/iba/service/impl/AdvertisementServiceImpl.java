@@ -68,7 +68,42 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     }
 
     @Override
-    public PageWrapper<AdvertisementResp> findAll(Integer page, Integer size, AdvertisementReqParams advertisementReqParams) {
+    public PageWrapper<AdvertisementResp> findAll(Integer page, Integer size, AdvertisementReqParams advertisementReqParams, Long id) {
+        Sort sort = null;
+        if (advertisementReqParams.getSortByRating()) {
+            sort = Sort.by("ratingSum").descending();
+        }
+        Pageable pageable;
+        if (sort != null) {
+            pageable = PageRequest.of(page, size, sort);
+        } else {
+            pageable = PageRequest.of(page, size);
+        }
+
+        Page<Advertisement>
+                requests;
+        System.out.println(id);
+//        if (!advertisementReqParams.getAdvertisementTypes().isEmpty()) {
+            Specification<Advertisement> specification =
+                    getAdvertisementSpecification(advertisementReqParams.getAdvertisementTypes());
+            if(id != -1L) {
+                requests = advertisementRepository.findAllByStatusEqualsOrStatusEqualsAndUserId(pageable, AdvertisementStatus.PUBLISHED, AdvertisementStatus.DRAFT, id);
+            } else {
+                requests = advertisementRepository.findAllByStatusIsNot(pageable, AdvertisementStatus.PENDING);
+            }
+//        } else {
+//            requests = advertisementRepository.findAllByStatusIsOrStatusAndUserId(pageable, AdvertisementStatus.PENDING, AdvertisementStatus.DRAFT, id);
+//        }
+
+        return
+                new PageWrapper<>(advertisementMapper
+                        .toDtoList(requests.toList()),
+                        requests.getTotalPages(),
+                        requests.getTotalElements());
+    }
+
+    @Override
+    public PageWrapper<AdvertisementResp> findAllPublish(Integer page, Integer size, AdvertisementReqParams advertisementReqParams) {
         Sort sort = null;
         if (advertisementReqParams.getSortByRating()) {
             sort = Sort.by("ratingSum").descending();
@@ -86,9 +121,9 @@ public class AdvertisementServiceImpl implements AdvertisementService {
             Specification<Advertisement> specification =
                     getAdvertisementSpecification(advertisementReqParams.getAdvertisementTypes());
 
-            requests = advertisementRepository.findAllByStatusIsNot(specification, pageable, AdvertisementStatus.PENDING);
+            requests = advertisementRepository.findAllByStatusEquals(specification, pageable, AdvertisementStatus.PUBLISHED);
         } else {
-            requests = advertisementRepository.findAllByStatusIsNot(pageable, AdvertisementStatus.PENDING);
+            requests = advertisementRepository.findAllByStatusEquals(pageable, AdvertisementStatus.PUBLISHED);
         }
 
         return

@@ -12,7 +12,9 @@ public interface AdvertisementService {
 
     AdvertisementResp findById(Long id);
 
-    PageWrapper<AdvertisementResp> findAll(final Integer page, final Integer size, AdvertisementReqParams advertisementReqParams);
+    PageWrapper<AdvertisementResp> findAll(final Integer page, final Integer size, AdvertisementReqParams advertisementReqParams, Long id);
+
+    PageWrapper<AdvertisementResp> findAllPublish(final Integer page, final Integer size, AdvertisementReqParams advertisementReqParams);
 
     PageWrapper<AdvertisementResp> findAllForAdmin(final Integer page, final Integer size, AdvertisementReqParams advertisementReqParams);
 

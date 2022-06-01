@@ -15,6 +15,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
@@ -23,13 +24,17 @@ import androidx.core.content.ContextCompat
 import by.chekun.App
 import by.chekun.R
 import by.chekun.di.component.ViewModelComponent
+import by.chekun.domain.UserViewModel
 import by.chekun.presentation.activities.add.AddAdvertisementActivity
 import by.chekun.presentation.activities.login.LoginActivity
 import by.chekun.presentation.activities.login.RegistrationActivity
+import by.chekun.presentation.activities.main.MainActivity
 import by.chekun.presentation.activities.settings.SettingsActivity
 import by.chekun.presentation.activities.user.ProfileActivity
+import by.chekun.repository.database.entity.User
 import by.chekun.utils.hideKeyboardEx
 import java.util.*
+import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity() {
     protected open val PERMISSION_REQUEST = 5
@@ -40,6 +45,8 @@ abstract class BaseActivity : AppCompatActivity() {
     protected var requestCode: Int? = null
     private var mToolbar: Toolbar? = null
 
+    var viewModel: UserViewModel? = null
+        @Inject set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +87,11 @@ abstract class BaseActivity : AppCompatActivity() {
                 startActivity(Intent(this, LoginActivity::class.java))
                 return true
             }
+            R.id.action_logout -> {
+                viewModel?.deleteAll()
+                startActivity(Intent(this, LoginActivity::class.java))
+                return true
+            }
             R.id.action_settings -> {
                 startActivity(Intent(this, SettingsActivity::class.java))
                 return true
@@ -92,10 +104,21 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
-        // Action View
-        //MenuItem searchItem = menu.findItem(R.id.action_search);
-        //SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        // Configure the search info and add any event listeners
+//        val user: User? = viewModel?.getCurrentUser()
+//
+//        if(user != null) {
+//            val profileItem: MenuItem = menu!!.findItem(R.id.action_profile);
+//            val loginItem: MenuItem = menu.findItem(R.id.action_login);
+//            val addAdvItem: MenuItem = menu!!.findItem(R.id.action_add_car);
+//            val settingsItem: MenuItem = menu.findItem(R.id.action_settings);
+//        } else {
+//            val registrationItem: MenuItem = menu!!.findItem(R.id.action_registration);
+//            val loginItem: MenuItem = menu.findItem(R.id.action_login);
+//            val addAdvItem: MenuItem = menu!!.findItem(R.id.action_add_car);
+//            val settingsItem: MenuItem = menu.findItem(R.id.action_settings);
+//        }
+        //Action View
+         //Configure the search info and add any event listeners
         //return super.onCreateOptionsMenu(menu);
         return true
     }

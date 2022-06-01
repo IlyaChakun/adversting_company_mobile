@@ -40,9 +40,6 @@ import javax.inject.Inject
 
 class ProfileActivity : BaseActivity() {
 
-    var viewModel: UserViewModel? = null
-        @Inject set
-
     private lateinit var binding: UserBinding
 
 

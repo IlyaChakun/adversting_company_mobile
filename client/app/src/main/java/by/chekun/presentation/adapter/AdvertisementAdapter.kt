@@ -39,6 +39,7 @@ class AdvertisementAdapter(
         holder.bind(advertisementItems[position], listener)
 
         val car = advertisementItems[position]
+
         if (car.picture != null) {
             val base64String = car.picture
             val decoder: Base64.Decoder = Base64.getDecoder()

@@ -35,8 +35,6 @@ import javax.inject.Inject
 
 class LoginActivity : BaseActivity() {
 
-    var viewModel: UserViewModel? = null
-        @Inject set
 
     private var saveButton: Button? = null
     private val editTextFieldsMap: MutableMap<String, TextViewValidStatus> = HashMap()
@@ -237,7 +235,7 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_add_new_car, menu)
+        menuInflater.inflate(R.menu.login_menu, menu)
         return true
     }
 

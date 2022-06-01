@@ -26,8 +26,6 @@ import javax.inject.Inject
 
 class RegistrationActivity : BaseActivity() {
 
-    var viewModel: UserViewModel? = null
-        @Inject set
 
     private var saveButton: Button? = null
     private val editTextFieldsMap: MutableMap<String, TextViewValidStatus> = HashMap()

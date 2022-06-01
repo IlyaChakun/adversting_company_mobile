@@ -46,6 +46,7 @@
     <string name="developer_mode_on">prog mod on</string>
     <string name="developer_mode_off">prog mod off</string>
     <string name="button_save_car">Добавить объявление</string>
+    <string name="button_draft_car">Черновик</string>
     <string name="label_car_brand">Выберите марку автомобиля *</string>
     <string name="label_car_model">Выберите модель *</string>
     <string name="label_release_year">Выберите год выпуска *</string>
@@ -120,11 +121,11 @@
 
 
     <string-array name="types_array">
-        <item>advertising_in_stores</item>
-        <item>TV_advertising</item>
-        <item>radio_advertising</item>
-        <item>outdoor_advertising</item>
-        <item>internet_advertising</item>
+        <item>Реклама в магазине</item>
+        <item>ТВ реклама</item>
+        <item>Радио реклама</item>
+        <item>Уличная реклама</item>
+        <item>Интернет реклама</item>
     </string-array>
 
 

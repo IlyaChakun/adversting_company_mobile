@@ -4,6 +4,7 @@ package by.chekun.presentation.activities.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -35,7 +36,7 @@ import javax.inject.Inject
 
 class MainAdminActivity : BaseActivity() {
 
-    var viewModel: PendingAdvertisementsViewModel? = null
+    var pendViewModel: PendingAdvertisementsViewModel? = null
         @Inject set
 
     lateinit var binding: ActivityAdminMainBinding
@@ -45,8 +46,8 @@ class MainAdminActivity : BaseActivity() {
         this.supportActionBar?.title = "Pending ads"
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_admin_main)
-        viewModel?.getAllItems()
-        viewModel?.getLiveDataItems()?.observe(this, Observer { it?.let { initRecyclerView(it) } })
+        pendViewModel?.getAllItems()
+        pendViewModel?.getLiveDataItems()?.observe(this, Observer { it?.let { initRecyclerView(it) } })
 
     }
 
@@ -57,6 +58,11 @@ class MainAdminActivity : BaseActivity() {
         advertisementAdapter.setItemClickListener(itemClickListener)
         rvUsers.layoutManager = manager
         rvUsers.adapter = advertisementAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.auth_user_menu, menu)
+        return true
     }
 
 
@@ -93,7 +99,7 @@ class MainAdminActivity : BaseActivity() {
         req.advertisementId = id
         req.status = AdvertisementStatus.PUBLISHED
 
-        viewModel?.setPublishStatus(req)?.enqueue(object : Callback<TextResp> {
+        pendViewModel?.setPublishStatus(req)?.enqueue(object : Callback<TextResp> {
 
             override fun onResponse(call: Call<TextResp>?, response: Response<TextResp>) {
 

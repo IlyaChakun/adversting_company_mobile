@@ -15,6 +15,11 @@ class AllAdvertisementsViewModel(application: Application, private val mReposito
         mRepository.getAllAdvertisements().subscribe { list -> liveDataItems.value = list }
     }
 
+    @SuppressLint("CheckResult")
+    fun getPublishItems() {
+        mRepository.getPublishAdvertisements().subscribe { list -> liveDataItems.value = list }
+    }
+
     fun getLiveDataItems(): LiveData<List<AdvertisementResp>> {
         return liveDataItems
     }

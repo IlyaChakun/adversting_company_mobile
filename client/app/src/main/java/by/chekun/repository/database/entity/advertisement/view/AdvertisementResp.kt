@@ -16,7 +16,7 @@ class AdvertisementResp() : AbstractDto() {
     var status: AdvertisementStatus? = null
 
     fun getStringType():String{
-        return type.toString()
+        return AdvertisementType.fromStringToType(type!!)
     }
 
     fun getStringStatus():String{

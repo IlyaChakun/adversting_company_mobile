@@ -29,6 +29,16 @@ class AppRepository(private val serverCommunicator: ServerCommunicator, private 
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
+    fun getPublishAdvertisements(): Single<List<AdvertisementResp>?> {
+        return serverCommunicator.getPublishAdvertisements()
+                .flatMap { list ->
+                    //mainDatabase.advertisementsDao().insertList(list.body().adds)
+                    Single.just(list.body()?.adds)
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
     fun getPendingAdvertisements(): Single<List<AdvertisementResp>?> {
         return serverCommunicator.getPendingAdvertisements()
                 .flatMap { list ->

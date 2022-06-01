@@ -19,6 +19,9 @@ interface ApiService {
     @GET("/api/v1/advertisements")
     fun getAdvertisements(): Single<Response<AddResponse>>
 
+    @GET("/api/v1/advertisements/publish")
+    fun getPublishAdvertisements(): Single<Response<AddResponse>>
+
     @GET("/api/v1/advertisements/admin")
     fun getAdminAdvertisements(): Single<Response<AddResponse>>
 

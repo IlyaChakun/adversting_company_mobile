@@ -33,6 +33,13 @@ class ServerCommunicator(private val mService: ApiService) {
                 .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
     }
 
+    fun getPublishAdvertisements(): Single<Response<AddResponse>> {
+
+        return mService.getPublishAdvertisements()
+                .compose(singleTransformer())
+                .doOnError { t: Throwable -> Log.d("ServerCommunicator", t.message.toString()) }
+    }
+
     fun getPendingAdvertisements(): Single<Response<AddResponse>> {
 
         return mService.getAdminAdvertisements()
